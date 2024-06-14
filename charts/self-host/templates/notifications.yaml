@@ -94,6 +94,9 @@ spec:
         - name: feature-flags-config
           mountPath: /etc/bitwarden/core/flags.json
           subPath: flags.json
+        {{- if .Values.volume.caCertificates.enabled }}
+        - name: ca-certificates
+          mountPath: /etc/bitwarden/ca-certificates
         {{- end }}
         securityContext:
 {{ toYaml .Values.component.notifications.securityContext | indent 10 }}
@@ -115,6 +118,10 @@ spec:
         - name: feature-flags-config
           configMap:
             name: {{ .Release.Name }}-feature-flags
+        {{- if .Values.volume.caCertificates.enabled }}
+        - name: ca-certificates
+          configMap:
+            name: {{ .Values.volume.caCertificates.configMapName }}
         {{- end }}
 
 ---
