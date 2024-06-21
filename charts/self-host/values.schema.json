@@ -1453,7 +1453,10 @@
                             "enum": ["RollingUpdate", "Recreate"]
                         },
                         "securityContext": {
-                            "type": "object",
+                            "type": [
+                                "object",
+                                "null"
+                            ],
                             "properties": {
                                 "allowPrivilegeEscalation": {
                                     "type": ["boolean", "null"]
