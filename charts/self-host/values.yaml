@@ -60,6 +60,9 @@ general:
       admin:
         path: /(admin/?.*)
         pathType: ImplementationSpecific
+      keyConnector:
+        path: /(key-connector/?.*)
+        pathType: ImplementationSpecific
 
   # Override application container version tags.  Theses will be versioned with the chart and need not be changed in most circumstances.
   coreVersionOverride: ""
@@ -223,12 +226,14 @@ component:
     podServiceAccount:
   keyConnector:
     # Enable or disable the Key Connector component
-    enabled: false
+    enabled: true
+    # Key Connector version
+    version: "2024.4.0"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/keyconnector
+      name: bitwarden/key-connector
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -243,6 +248,12 @@ component:
     securityContext:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
+    # Key Connector configuration
+    config:
+      databaseProvider: "json"
+      rsaKeyProvider: "certificate"
+      certificateProvider: "filesystem"
+
   notifications:
     # Additional deployment labels
     labels: {}

@@ -1407,6 +1407,9 @@
                         "enabled": {
                             "type": "boolean"
                         },
+                        "version": {
+                            "type": "string"
+                        },
                         "labels": {
                             "type": "object",
                             "additionalProperties": {
@@ -1528,6 +1531,9 @@
                         },
                         "podServiceAccount": {
                             "type": ["string", "null"]
+                        },
+                        "config": {
+                            "type": ["object"]
                         }
                     }
                 },
