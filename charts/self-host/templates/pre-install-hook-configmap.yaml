@@ -94,7 +94,7 @@ metadata:
     "helm.sh/hook-weight": "1"
 data:
   keyConnectorSettings__webVaultUri: "https://{{ .Values.general.domain }}"
-  keyConnectorSettings__identityServerUri: "{{ template "bitwarden.keyconnector" . }}:5000"
+  keyConnectorSettings__identityServerUri: "http://{{ template "bitwarden.identity" . }}:5000"
   keyConnectorSettings__database__provider: {{ .Values.component.keyConnector.config.databaseProvider }}
   {{- if eq .Values.component.keyConnector.config.databaseProvider "json" }}
   keyConnectorSettings__database__jsonFilePath: "/etc/bitwarden/key-connector/data.json"
