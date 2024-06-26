@@ -81,12 +81,14 @@ spec:
 {{ toYaml .Values.component.keyConnector.resources | indent 10 }}
         volumeMounts:
         {{- if eq .Values.component.keyConnector.config.certificateProvider "filesystem" }}
-        - name: key-connector
-          mountPath: /etc/bitwarden/key-connector/bwkc.pfx
+        - name: key-connector-cert
+          mountPath: /etc/bitwarden/bwkc.pfx
+          subPath: bwkc.pfx
         {{- end }}
         {{- if eq .Values.component.keyConnector.config.databaseProvider "json" }}
         - name: key-connector-json-db
-          mountPath: /etc/bitwarden/key-connector
+          mountPath: /etc/bitwarden
+          subPath: data.json
         {{- end }}
         {{- if .Values.volume.logs.enabled }}
         - name: applogs
@@ -107,7 +109,7 @@ spec:
 {{ toYaml .Values.component.keyConnector.securityContext | indent 10 }}
       volumes:
         {{- if eq .Values.component.keyConnector.config.certificateProvider "filesystem" }}
-        - name: key-connector
+        - name: key-connector-cert
           secret:
             secretName: {{ .Release.Name }}-key-connector-cert
         {{- end }}
