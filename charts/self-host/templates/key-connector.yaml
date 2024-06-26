@@ -41,7 +41,6 @@ spec:
         ']
         image: "{{ .Values.supportComponents.kubectl.image.name }}:{{ .Values.supportComponents.kubectl.image.tag }}"
         volumeMounts:
-          mountPath: /etc/bitwarden/identity
           - name: applogs
             mountPath: /logs
     {{- end }}
