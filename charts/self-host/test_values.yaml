@@ -63,7 +63,7 @@ general:
         path: /(admin/?.*)
         pathType: ImplementationSpecific
       keyConnector:
-        path: /(key-connector/?.*)
+        path: /key-connector/(.*)
         pathType: ImplementationSpecific
 
   # Override application container version tags.  Theses will be versioned with the chart and need not be changed in most circumstances.
