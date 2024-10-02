@@ -1,0 +1,41 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: dev
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: dev
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: dev
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: dev
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: dev
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: dev
+  keyConnector:
+    image:
+      name: bitwardenprod.azurecr.io/key-connector
+      tag: "2024.8.0"
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: dev
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: dev
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: dev
