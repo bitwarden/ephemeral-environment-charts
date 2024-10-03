@@ -1,0 +1,14 @@
+helm:
+  parameters:
+  - name: component.admin.image.name
+    value: bitwardenprod.azurecr.io/admin
+    forcestring: true
+  - name: component.admin.image.tag
+    value: ephemeral-environment-api-env@sha256:1c71a0b71947210457cea302fa117cea3f6570f8690a7e2b38d916f3f146b9f3
+    forcestring: true
+  - name: component.api.image.name
+    value: bitwardenprod.azurecr.io/api
+    forcestring: true
+  - name: component.api.image.tag
+    value: ephemeral-environment-api-env@sha256:f19bc7d74c15cf794804f6840c3fc42e40c8c0b0404ed3704ae8ed2672f032fc
+    forcestring: true
