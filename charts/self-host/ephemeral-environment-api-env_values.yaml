@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: ephemeral-environment-api-env@sha256:1c71a0b71947210457cea302fa117cea3f6570f8690a7e2b38d916f3f146b9f3
+      tag: ephemeral-environment-api-env@sha256:453f8478939ffb587f1c1bf153005ed4853f2b050ea4dea67d6cb4af20e598b8
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: ephemeral-environment-api-env@sha256:f19bc7d74c15cf794804f6840c3fc42e40c8c0b0404ed3704ae8ed2672f032fc
+      tag: ephemeral-environment-api-env@sha256:25adf3d9625c42264153e4b5bd21f8ac6436f887deab85e445cefe12f536ec41
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: ephemeral-environment-api-env@sha256:300b09a5da8f5b7ac9fbd0a8e7e91b8220af67d21f729a56e0ef9a11c56ada31
+      tag: ephemeral-environment-api-env@sha256:ae2e1012b05ff2ee3ea9f3a55b1c072ae62cf45eb05477ee1ad1923c00ee6b98
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: ephemeral-environment-api-env@sha256:70a5bf043e8b4558d5b3ce261b08ec4ea57ab4dd6fef35d3717de3cee2ca7d51
+      tag: ephemeral-environment-api-env@sha256:beb7918c4b1698ca5925673f81855ee61bf62ad88ed8aaccc1f3428ee561a124
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: ephemeral-environment-api-env@sha256:c886a19913e88a775972db7dd64e9f2721b48b35826a3ebd18889fea0277e1f9
+      tag: ephemeral-environment-api-env@sha256:bf64b0211a622bb7795d63ed6ee3cf7f225eb66400fe45542544105e8305e721
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: ephemeral-environment-api-env@sha256:c69147d412c93e6dd07ff72d64e906004ba7278cc81d673abe4c31ebbefd45d3
+      tag: ephemeral-environment-api-env@sha256:5a9a19d485c24d29238de4311422b295857fef025fa2d443e7c880bbce802391
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: ephemeral-environment-api-env@sha256:d7df53f064b8c35b54c9976b609de4d6cb5cb80bf4105a4652cdacb38a6c8627
+      tag: ephemeral-environment-api-env@sha256:bc5ee162dd44d02682ec0011a26988b01aade9b7d7d01cc8f623f2eacdd310d9
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: ephemeral-environment-api-env@sha256:9984c91ae77b7661d07593ac5b9ad59c9ce3d999fdbcc337b0a266b2d273a97c
+      tag: ephemeral-environment-api-env@sha256:3c3ba556ad8afc304dfebf07f9e2e99f3dc7c0597c8cd0116b9c398c39fd29d9
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: ephemeral-environment-api-env@sha256:819d6740d4df606a3073bcfcd439bdb36b8db67246887e05758c4c89671ac87c
+      tag: ephemeral-environment-api-env@sha256:c40b0cf560de53cf4ae2b8cb64643d12f8a00d8a4749a1cd7fc27cc8d50e6756
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: ephemeral-environment-api-env@sha256:36c3b5f623c9dfd3992c3ec4fc162c1d9f841eda3453af163a22d3897e5d7326
+      tag: ephemeral-environment-api-env@sha256:266f23c73c89b7069981e024bacce4330c749316ecf0c4b33759486d4ebb8383
