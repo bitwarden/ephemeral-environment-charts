@@ -58,7 +58,8 @@ spec:
                   "https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_PROJECT}/issues/${GITHUB_PR_ID}/comments" | jq)
                   
                   HTTP_STATUS=$(echo "$RESPONSE" | jq -r '. | select(.message) | .message')
-                  
+                  echo "HTTP Status: $HTTP_STATUS"
+                  echo "Response: $RESPONSE"
                   if [[ "$HTTP_STATUS" == "null" ]]; then
                     # Get comment ID and save it to configmap
                     COMMENT_ID=$(echo "$RESPONSE" | grep -o '"id": [0-9]*' | awk '{print $2}' | head -n 1)
