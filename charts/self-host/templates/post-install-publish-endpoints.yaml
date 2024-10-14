@@ -33,9 +33,6 @@ spec:
             - "-c"
           args:
             - |
-              echo "Validating that we can curl GitHub..."
-              curl -s -H "Authorization: token ${GITHUB_TOKEN}" -X GET "https://api.github.com/orgs/{{ .Values.github.owner }}"
-
               # Comment data
               comment_body=$(cat <<EOF
               Ephemeral Environment Details:
@@ -72,9 +69,9 @@ spec:
                     kubectl create configmap {{ .Release.Name }}-pr-comment-id --from-literal=comment_id=${COMMENT_ID}
                     break
                   elif [[ "$HTTP_STATUS" == "403" || "$HTTP_STATUS" == "429" ]]; then
-                    echo "Rate limit exceeded, waiting until reset..."
                     CURRENT_TIME=$(date +%s)
                     SLEEP_TIME=$((RATE_LIMIT_RESET - CURRENT_TIME))
+                    echo "Rate limit exceeded, waiting ${SLEEP_TIME} seconds until reset..."
                     sleep $SLEEP_TIME
                   else
                     echo "Received error from GitHub, retrying in 5 minutes..."
