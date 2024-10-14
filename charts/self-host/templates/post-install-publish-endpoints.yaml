@@ -70,7 +70,8 @@ spec:
                   fi
                 done
 
-              echo "Comment URL: https://github.com/${GITHUB_OWNER}/${GITHUB_PROJECT}/issues/${GITHUB_PR_ID}#issuecomment-${COMMENT_ID}"
+                echo "Comment URL: https://github.com/${GITHUB_OWNER}/${GITHUB_PROJECT}/issues/${GITHUB_PR_ID}#issuecomment-${COMMENT_ID}"
+              fi
 
 
           envFrom:
