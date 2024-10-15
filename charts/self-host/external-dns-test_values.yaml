@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: external-dns-test@sha256:421411a251f2c6be41040bed960f746ae275f88176fc8792ea4a6430a4123e20
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: external-dns-test@sha256:4e8a7d9da876db272faa7013980c747f4f99d20d78b8a6ce6bd4243da4686203
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: external-dns-test@sha256:a9cf2c321229a66da68d6d0bdb5e83e6922d67ed25205e6ddca1a557a2443fc2
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: external-dns-test@sha256:642c199c8ee75aa727bd1f26c06ece53b5217f28666091606ff2692b36f3b783
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: external-dns-test@sha256:4b3f9b2e85a8877932886be2f2493f87fc883819427a667bebe324fcfd34d96c
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: external-dns-test@sha256:976ec92f8ed47aabdcd578aad948b3a0ff32e81c07a1e151318f373fd2f205ec
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: external-dns-test@sha256:e6d539086caf63c2cf5f500c8d6d1a36e0b91e64d16d9f625e82aff7f49c36b8
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: external-dns-test@sha256:24c99b028fd90f0838bc25be8627c29d41e9b292efbd259781e522702e77c4fb
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: external-dns-test@sha256:85f6c98e4f47028e00c71c9311bb4331c42fadd8b0c8d70a5f4db6e2d3c8e7c7
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: external-dns-test@sha256:de38ee7cbfa2c81944a502df8b6d85accb3b3b654d28f67938485a148820737a
