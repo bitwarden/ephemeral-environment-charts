@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: ephem-test-01@sha256:f5a8e01198e29617278a73288b8f423bc2e2a2d9cfd6ac91ee080ba4e771174e
+      tag: ephem-test-01@sha256:8db77d164f1f7391ed1c40721a18920e6d3c298de85d9274a2878508f591ee18
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: ephem-test-01@sha256:4d0e21502cbf3aab6e0fcab3ca3b2dbda5da28908f1865ab9f1b9c565d13a027
+      tag: ephem-test-01@sha256:bce63c9f3c8636b5ea884d64925b3b2e1f8b7447be828abf848d54cf13281d7e
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: ephem-test-01@sha256:6018b67dee9de2edbe8ab6d22c8a2138ce3ce8512fba8a103514632c6c2b96af
+      tag: ephem-test-01@sha256:08ac39a69da265268f901ac89d2638c5115fed22e554a362147b2e6029906e1c
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: ephem-test-01@sha256:b30029ea3581e9131e958c1a885f3401c4bfb438e22b641edbb1f6b2e02364e6
+      tag: ephem-test-01@sha256:d8cfcde6ef3785bb0dc0fb8eccf18de41630d856e73e246b9f249918f78d03d2
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: ephem-test-01@sha256:e6b05ca3a5f11e1e7d1f402f681b13f8747ab5b644993751f47cf2ae23a37e3a
+      tag: ephem-test-01@sha256:318078e11c515990336a4307c0cb4ef1f891da4dd3dc73281f371af8b2efe777
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: ephem-test-01@sha256:ec5f05f728d87e6e966f9291d491efe2e6ba59bf8dbb56c2865ea548703b4a72
+      tag: ephem-test-01@sha256:5ffc0ee29587aba0a23273ea429d9992c8abde74eef5300ce75c479a6f66522e
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: ephem-test-01@sha256:2bacc5933c38278284980268e6915f12437cdeb3b0e9f3f0c00984ff7ffbcc12
+      tag: ephem-test-01@sha256:324ca499d6254ae23c18e4892c34421be0f01f246f752c59d8917006367e7aab
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: ephem-test-01@sha256:0bdac4b3df13501aab163f29cd7e0f9a8815d7649894ff93387edfa3c30e19c8
+      tag: ephem-test-01@sha256:5e876e753de2975f7aecdc10ae236aecf0ee880bb58292798dded6b4a5c2379e
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: ephem-test-01@sha256:bd678eb19a57be4baf24676390acf6bc298f2f0d9f2d5e112707a628ea406196
+      tag: ephem-test-01@sha256:88c38cf5425812aeb8b30c6d889eeb52c0f9d1dbb97da8ad86ab91c2fb5f6f36
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: ephem-test-01@sha256:3cfee45d07f95bc4359373b7f56dd17871ae899b56116eeb8fa87cf768e9f17e
+      tag: ephem-test-01@sha256:5dce9dff762cb5d86230060c7ae283ea6703ebf0138ede1e52f9a7ef3aaf1b03
