@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: ee-patch-01@sha256:6ac476ef7540aaa89cd43d74d9322f436c5bf961ba361714c637ff0ada80c980
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: ee-patch-01@sha256:3337052d97f740c36cd26d238000fdb8b55a415058c627e8cdcefcc79ebeeed7
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: ee-patch-01@sha256:b184f1e16c2e00cee555b569a9c9774997cd51cf2c2cb3dc7f5682cefa1f6baa
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: ee-patch-01@sha256:49edfb7bb5f110d0313d1bda03a061d43f3e4b1e90b1530555f7f6ccb6858f83
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: ee-patch-01@sha256:dd913be78b12c7be52fb64bc9d837449438d77518b433fdcdd855b4dec5fbfb3
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: ee-patch-01@sha256:0bfbbfc9ecdd47f11920dc06e016c1a6d5088001b5d9c11901e63a87a825bdd1
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: ee-patch-01@sha256:f2a3f58055cda5a5706a8b0c49f995af42b2f57cf2eec3c197bb404a82418b1f
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: ee-patch-01@sha256:cc2a1638e51aef8b58c46aca61ca9e661647e8fc3e61b81527abf85da663f667
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: ee-patch-01@sha256:1e141edc7f4921ce48520d277a098fdb976e7ee4aecae1ea202bb77c764ca16e
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: ee-patch-01@sha256:ae614808413f724b8c176bce897a9133858b77348c5d2086da14228612eb654b
