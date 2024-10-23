@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:3bb20a0b67e95afce4acb37fbb0a31469fd19cb505972cebe681c78f4604e382
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:efb04a88c781c52a0bb69af604d582bb8b26da5c621175f8f35364dabaf399d5
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:a7d9c1d5d02708589987923b84f2614c3ae5cbc9a188851acb4701229342a732
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:c0668d7006ea89810679315eccc10cfed7fc629674fdcbd2d39daef845b0ff1d
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:8f1d0c3d8700d842f968be99a3756a973b602a080a8784d1c285120e446dca2c
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:16374bddd7ff3d4464ba8b76e7727046b2d7469bf3b7ce1c1cb4a9e7553f627d
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:a04573d884e99ad2db56557c416fd8d1c99ca719a5d316ab444047de136750db
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:623286e478cd14f0a3e4311d7e873f6cec3219d7b2c90753971da38c64cde4e3
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:db40b763f711925201e12427ee6dd8e1622a0e646728d096b773854c7f41d60e
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: ac-pm-13790-remove-h1-implement-new-mini-details-organization-user-endpoint-feature-flag@sha256:9ac1298cda4dbd50e394785949a9e0476144ebf9d64e78a056448d472840c06e
