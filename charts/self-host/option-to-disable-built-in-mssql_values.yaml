@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: option-to-disable-built-in-mssql@sha256:342b32d56f2b4bf4bb0c234dab71096a45ded4384eb9ecafab0847869acd9a86
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: option-to-disable-built-in-mssql@sha256:917cdb3ba2e378183ea5884ee24043386a6c9e94cb79caf4790161de7c114721
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: option-to-disable-built-in-mssql@sha256:bfc640c1cd2949362c4cece5ac62bdfbb3520cd4be81fc816913384756097da8
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: option-to-disable-built-in-mssql@sha256:303c8f12c25d5eee402e9dd934a2019f5959a07a4638352ea0a0dd63a12f8a1f
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: option-to-disable-built-in-mssql@sha256:4376b77c931f235678e3ebe1f73a13292b39b837f3d5d3aee0c0cdadcbb6b002
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: option-to-disable-built-in-mssql@sha256:f22a1cf48dbfa1877d12f1ef0a3195af642aa3d6583c731432b12f01f3a68344
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: option-to-disable-built-in-mssql@sha256:a56d096879a91acef4d266bb37bdf970a40fa7ff74a4e36b7997ac9ffd30dd3f
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: option-to-disable-built-in-mssql@sha256:89c77ae76689c74904077ef765ee0dadca7344d834aed8b9de72a70858315d25
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: option-to-disable-built-in-mssql@sha256:2796f9b876bc32f426ae0cfcc16cbcb3d58bfcd9b91979b21ea5a3e8b0797d26
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: option-to-disable-built-in-mssql@sha256:30fbaf502f68806c040c82b544e987d0bfe1b98a0755035e7331783a001fc362
