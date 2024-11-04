@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: auth-pm-10394-ssh-keys@sha256:51728c10703e02fa35c87023dc5720bedf5c242cda377860c96fe9675fd5caf9
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: auth-pm-10394-ssh-keys@sha256:d499ec0e1247e41a1cc44b24daac8bcceee464739de81520d36d23980e2ab1f5
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: auth-pm-10394-ssh-keys@sha256:8ad29db0a2fd6447c9ffbcf382e33d3442680355e1577df8f068a363a3efc519
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: auth-pm-10394-ssh-keys@sha256:616c872bfcd23fe0cb982f653973bdf1968ca12b0543dbfc2f57fc36c15df69e
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: auth-pm-10394-ssh-keys@sha256:4f3acdeb8475cec69138c70da7beb21f6a8e7786f3471d4dc8f13ce52bb1a19e
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: auth-pm-10394-ssh-keys@sha256:4e8ba031f9169188e799c170c78eced159d0dfbb1d3f860a74cfddd3f1f1f28a
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: auth-pm-10394-ssh-keys@sha256:9e202bf73b708a9c58de955f71f192de9af7e7c2aa709c057af8bfabf28b1b6b
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: auth-pm-10394-ssh-keys@sha256:e0f25b3fbf74e8fbf6e7f384e004cf908c68939e5b057ab75d383fdde0936c88
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: auth-pm-10394-ssh-keys@sha256:808c533bd1d59f93cae8e9d73ce17622f4d3ff3fa384dea46d6bb7a5fc1790bc
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: auth-pm-10394-ssh-keys@sha256:b4b1c4ac54a555894c83dcc8034c0e5e63da6891958dbbd65d546e860a8bf732
