@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: bre-385-create-seeded-database@
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: bre-385-create-seeded-database@
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: bre-385-create-seeded-database@
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: bre-385-create-seeded-database@
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: bre-385-create-seeded-database@
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: bre-385-create-seeded-database@
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: bre-385-create-seeded-database@
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: bre-385-create-seeded-database@
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: bre-385-create-seeded-database@
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: bre-385-create-seeded-database@
