@@ -282,7 +282,7 @@ component:
     podServiceAccount:
   keyConnector:
     # Enable or disable the Key Connector component
-    enabled: true
+    enabled: false
     # Additional deployment annotations
     annotations: {}
     # Additional deployment labels
