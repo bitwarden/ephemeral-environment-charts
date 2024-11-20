@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: billing-PM-15069-btcustomeridold@sha256:22c1cd3ecb5a9562aa2f2a69fe20c24b0f41e14a32b22aa78904cc363c377ce6
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: billing-PM-15069-btcustomeridold@sha256:01c1a9eb07174c1ba11a4aff9c50dce735a222ff88302270380cf80a0dba8655
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: billing-PM-15069-btcustomeridold@sha256:a0e24d8c50937f030107e7d81511f20ac66e4d62551331ea1de32ef1bad0eef2
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: billing-PM-15069-btcustomeridold@sha256:727c6fb9b9dc531a624f500f316c0cd361056ee035fd8d7324da7f585360ae29
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: billing-PM-15069-btcustomeridold@sha256:41da4bd3c2ca474c451e458a60b3f8f24f71ce475e9f854817bbcd3a0595ff59
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: billing-PM-15069-btcustomeridold@sha256:323601e0e2923e1d00156f70142611fff34de9b8e64cabf708575c93016e776b
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: billing-PM-15069-btcustomeridold@sha256:9acfe6ad9c57deecac04d2d3c6ef1462e605f8c13f37de51e76aa759e19b7079
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: billing-PM-15069-btcustomeridold@sha256:6f77b531ae6dece87f936233683d189db09454f6db8e46652198898ed7490e66
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: billing-PM-15069-btcustomeridold@sha256:e33442c5c784dc989c77d5f04a99145abb369a599712ce4806d2179c56ed8429
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: billing-PM-15069-btcustomeridold@sha256:f8b4a6b10c7aec9a4a1fca5825bf057262ba757efe7d1b86a1b9000cea5a68b9
