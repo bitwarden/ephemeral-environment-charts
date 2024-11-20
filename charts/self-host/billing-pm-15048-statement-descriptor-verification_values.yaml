@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:7de8e95137b3a7927bc566a26b0ee93caa2d0c1f5ad95328ad1d86aa3bc8d6c4
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:8d4dbd7d47ed5ccc1a488ccc037c5c1c6b0fbfa10007d21d978b23bfb7219efa
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:7ac7b86b38b474547c9cf446772ece5846096e5ba5808be1ef72da8b0297795b
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:aa319a4e98e159a0e85d6f5be6525e213fd82fbb190e3c7d355cd03e3401d7a3
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:fd1a52d3dd01df95ead23b41f083851711aeb0f31cc89687518774ade92d93d2
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:6493b9f14fb822b43a6ea741a5db57b2c090940e72b3a6671a5c71c195dc81dd
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:6840fc1ef1e877564f9da35d67c73e5dd525f2b21e4abf3f8637a1fb00715588
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:6edefc66f99ab1e9f11a98203c764edb76ef8a1e02a75bb79d9e64d75384614a
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:cddb1c95a06611f102aa1bcac7883cf060899758c475bee95e8fc7a3a68852fa
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: billing-PM-15048-statement-descriptor-verification@sha256:67e95c394398672df307c731a34993246856a082e2c81053cea075fc70a48b1c
