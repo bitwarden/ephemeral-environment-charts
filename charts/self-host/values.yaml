@@ -102,7 +102,7 @@ general:
   coreVersionOverride: ""
   webVersionOverride: ""
   # Disable account registration on web vault
-  disableUserRegistration: "true"
+  disableUserRegistration: "false"
   # Comma-separated list of email addresses for Admin users
   admins: "false"
   email:
