@@ -32,9 +32,7 @@ spec:
             - name: CB_SERVER_NAME
               value: {{ template "bitwarden.dbClient" . }}
             - name: CB_SERVER_URL
-              value: "http://localhost:8978"
-            - name: CB_ROOT_URI
-              value: /db
+              value: "{{ .Values.general.domain }}/db"
             - name: CB_ADMIN_NAME
               value: ee
             - name: CB_ADMIN_PASSWORD
