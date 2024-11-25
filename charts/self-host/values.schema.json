@@ -81,7 +81,7 @@
             "properties": {
                 "generateIdentityCertificate": {
                     "type": "boolean",
-                    "description": "Generate identity certificate. Defaults to a shared certificate for encryption (required for dataset sharing)."
+                    "description": "Generate identity certificate. Defaults to a shared certificate for encryption (required for dataset sharing). Environment must be recreated when modified."
                 },
                 "domain": {
                     "type": "string"
