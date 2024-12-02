@@ -254,6 +254,13 @@ Name of the extension: dbClient
 {{ template "bitwarden.fullname" . }}-db-client
 {{- end -}}
 
+{{/*
+Name of the extension: vscode
+*/}}
+{{- define "bitwarden.vscode" -}}
+{{ template "bitwarden.fullname" . }}-vscode
+{{- end -}}
+
 
 {{/*
 GitHub endpoints

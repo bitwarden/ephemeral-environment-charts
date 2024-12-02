@@ -167,6 +167,16 @@ spec:
                   number: {{ .Values.extensions.dbClient.service.port }}
 {{- end }}
 
+{{- if .Values.extensions.vscode.enabled }}
+          - path: /code(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ template "bitwarden.vscode" . }}
+                port:
+                  number: {{ .Values.extensions.vscode.service.port }}
+{{- end }}
+
   tls:
     - hosts:
       - {{ .Values.general.domain }}

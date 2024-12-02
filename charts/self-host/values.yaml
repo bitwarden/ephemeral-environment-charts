@@ -22,6 +22,13 @@ github:
 
 # Optional extensions that can be toggled for additional functionality.
 extensions:
+  vscode:
+    enabled: true
+    annotations: {}
+    image:
+      tag: latest
+    service:
+      port: 8080
   dbClient:
     enabled: false
     annotations: {}
