@@ -31,6 +31,8 @@ spec:
           env:
             - name: CODER_ACCESS_URL
               value: "https://{{ .Values.general.domain }}/code"
+            - name: CODER_DISABLE_PASSWORD_AUTH
+              value: "true"
 ---
 apiVersion: v1
 kind: Service
