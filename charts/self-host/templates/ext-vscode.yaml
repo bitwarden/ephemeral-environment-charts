@@ -28,6 +28,9 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.extensions.vscode.service.port }}
+          env:
+            - name: CODER_ACCESS_URL
+              value: "https://{{ .Values.general.domain }}/code"
 ---
 apiVersion: v1
 kind: Service
