@@ -168,7 +168,7 @@ spec:
 {{- end }}
 
 {{- if .Values.extensions.vscode.enabled }}
-          - path: /code(/|$)(.*)
+          - path: /(code/?.*)
             pathType: ImplementationSpecific
             backend:
               service:
