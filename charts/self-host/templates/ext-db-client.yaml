@@ -38,51 +38,15 @@ spec:
             - name: CB_SERVER_URL
               value: "db.{{ .Values.general.domain }}"
             - name: CB_ADMIN_NAME
-              value: ee
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "bitwarden.dbClient" . }}-secret
+                  key: CB_ADMIN_NAME
             - name: CB_ADMIN_PASSWORD
-              value: $(SA_PASSWORD)
-          envFrom:
-            - secretRef:
-                name: {{ .Values.secrets.secretName }}
-          volumeMounts:
-            - name: db-client-config
-              mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
-              subPath: data-sources.json
-      volumes:
-        - name: db-client-config
-          configMap:
-            name: {{ template "bitwarden.dbClient" . }}-configmap
-
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ template "bitwarden.dbClient" . }}-configmap
-  namespace: {{ .Release.Namespace }}
-data:
-  data-sources.json: |
-    {
-      "folders": {},
-      "connections": {
-        "vault": {
-          "provider": "sqlserver",
-          "driver": "microsoft",
-          "name": "vault",
-          "save-password": true,
-          "template": true,
-          "configuration": {
-            "url": "jdbc:sqlserver://{{ template "bitwarden.mssql" . }}:1433;databaseName\u003dvault",
-            "configurationType": "URL",
-            "type": "dev",
-            "closeIdleConnection": true,
-            "auth-model": "sqlserver_database",
-            "bootstrap": {
-              "autocommit": true
-            }
-          }
-        }
-      }
-    }
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "bitwarden.dbClient" . }}-secret
+                  key: CB_ADMIN_PASSWORD
 
 ---
 apiVersion: v1
