@@ -1,3 +1,7 @@
+{{- /*
+Deploys a database client, service, and ingress.
+*/ -}}
+
 {{- if .Values.extensions.dbClient.enabled }}
 
 ---
@@ -32,7 +36,7 @@ spec:
             - name: CB_SERVER_NAME
               value: {{ template "bitwarden.dbClient" . }}
             - name: CB_SERVER_URL
-              value: "{{ .Values.general.domain }}/db"
+              value: "db.{{ .Values.general.domain }}"
             - name: CB_ADMIN_NAME
               value: ee
             - name: CB_ADMIN_PASSWORD
@@ -54,4 +58,43 @@ spec:
     - port: {{ .Values.extensions.dbClient.service.port }}
       targetPort: {{ .Values.extensions.dbClient.service.port }}
 
+
+{{- if .Values.general.ingress.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ template "bitwarden.dbClient" . }}-ingress
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    {{- if .Values.argoCDSupport }}
+    link.argocd.argoproj.io/environment: "Go to DB Client|https://db.{{ .Values.general.domain }}"
+    {{- end }}
+    {{- if .Values.general.ingress.tls.clusterIssuer }}
+    cert-manager.io/cluster-issuer: {{ .Values.general.ingress.tls.clusterIssuer }}
+    {{- end }}
+  labels:
+    app.kubernetes.io/component: ingress
+{{ include "bitwarden.labels" . | indent 4 }}
+spec:
+  ingressClassName: {{ .Values.general.ingress.className }}
+  rules:
+    - host: db.{{ .Values.general.domain }}
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ template "bitwarden.dbClient" . }}
+                port: 
+                  number: {{ .Values.extensions.dbClient.service.port }}
+  tls:
+    - hosts:
+      - db.{{ .Values.general.domain }}
+      {{- if .Values.general.ingress.tls.name }}
+      secretName: {{ .Values.general.ingress.tls.name }}-db-client
+      {{- end }}
+{{- end }}
 {{- end }}
