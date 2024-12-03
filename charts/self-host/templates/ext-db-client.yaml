@@ -46,7 +46,8 @@ spec:
                 name: {{ .Values.secrets.secretName }}
           volumeMounts:
             - name: db-client-config
-              mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver
+              mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
+              subPath: data-sources.json
       volumes:
         - name: db-client-config
           configMap:
