@@ -37,17 +37,9 @@ spec:
               value: {{ template "bitwarden.dbClient" . }}
             - name: CB_SERVER_URL
               value: "db.{{ .Values.general.domain }}"
-            - name: CB_ADMIN_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "bitwarden.dbClient" . }}-secret
-                  key: CB_ADMIN_NAME
-            - name: CB_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "bitwarden.dbClient" . }}-secret
-                  key: CB_ADMIN_PASSWORD
-
+          envFrom:
+            - secretRef:
+                name: {{ template "bitwarden.dbClient" . }}-secret
 ---
 apiVersion: v1
 kind: Service
