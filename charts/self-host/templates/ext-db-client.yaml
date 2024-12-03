@@ -68,6 +68,7 @@ data:
           "driver": "microsoft",
           "name": "vault",
           "save-password": true,
+          "template": true,
           "configuration": {
             "url": "jdbc:sqlserver://{{ template "bitwarden.mssql" . }}:1433;databaseName\u003dvault",
             "configurationType": "URL",
