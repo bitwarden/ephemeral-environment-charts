@@ -41,7 +41,11 @@ spec:
               value: ee
             - name: CB_ADMIN_PASSWORD
               value: {{ .Release.Name }}
-
+            - name: CB_DRIVER_MSSQL_DATABASES
+              value: "sqlserver://sa:$(SA_PASSWORD)@{{ template "bitwarden.mssql" . }}:1433/vault"
+          envFrom:
+            - secretRef:
+                name: {{ .Values.secrets.secretName }}
 ---
 apiVersion: v1
 kind: Service
