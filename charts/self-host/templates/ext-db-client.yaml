@@ -47,6 +47,7 @@ spec:
           volumeMounts:
             - name: db-client-config
               mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver
+              subPath: data-sources.json
       volumes:
         - name: db-client-config
           configMap:
