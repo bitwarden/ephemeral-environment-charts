@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: bre-385-create-seeded-database@sha256:b4299b821b1dd658f78d57de26c30e612b3b51a1bfc348aef415e2dbc3340074
+      tag: bre-385-create-seeded-database@sha256:28faa5fe3a1b28d76f9c534794126b45ac3463fbb6e5beb9cb688f0e95602e31
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: bre-385-create-seeded-database@sha256:f3c5468bcc4ff0852d73cbc7af0509089702f0a0e29ab39353691bee6c685366
+      tag: bre-385-create-seeded-database@sha256:f70d2241e2717cabfedef539a9deb8970cd831bbb3f2ab68e96fe6a80688aa13
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: bre-385-create-seeded-database@sha256:9e8950856af226d1e9c722ec9889822aa4be5fce84b823d38b4caf4fdeb0d225
+      tag: bre-385-create-seeded-database@sha256:56a89e8c9709cda56fdbd16bfe60be459c0656108406762d32d88ffa75750e38
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: bre-385-create-seeded-database@sha256:678dfa84af50c4dfaa2e12ec228e06ffee70dd0a55c9fb36c0479550e780fac3
+      tag: bre-385-create-seeded-database@sha256:650e712e1646b9ea6fedc732b2139e09c1d53f4b2ece6d0659140bce74ab08b4
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: bre-385-create-seeded-database@sha256:5eedbfbda02650a977802c6e7f9f481afdc06c7c38c54ab9ca1eeba1b15e4342
+      tag: bre-385-create-seeded-database@sha256:398991d3062c903d6a1d02e0bd42f9fd2bd8b39b4d969fc70522b2e1196c7198
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: bre-385-create-seeded-database@sha256:47b214a3263e429df2a6f62c6a83312704e7b43e2615204560c3505b5714925e
+      tag: bre-385-create-seeded-database@sha256:bf6dce45dd54b0101b31ab49f29b29105fc1d70b650c90514b2f1292d11daafe
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: bre-385-create-seeded-database@sha256:82dfccecd5dd99f2a7b5e1c811df9127686e4a3c0120e371b9c262dae0b2ef64
+      tag: bre-385-create-seeded-database@sha256:47cd650988f8b338ab05f8aa6c426ef86cb32bf383a1c233adca10903217784e
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: bre-385-create-seeded-database@sha256:f7e1653f11af328f98533e3cc38c262f873c102409048939098ae7bdedeee111
+      tag: bre-385-create-seeded-database@sha256:a6736e9ac75a1f6ea9a249e2fe90a5c2f152ccba63a1617a85f32b72a31e7770
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: bre-385-create-seeded-database@sha256:da551a02ab1049415c4780536c64eb47e3963be2c40e7000bc76792f16952161
+      tag: bre-385-create-seeded-database@sha256:61eb6cbc271a063e40ac2a75ea758ca9aec091b7ef925112492fafd910b39655
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: bre-385-create-seeded-database@sha256:c09b55ba072e0878b0ae0bc5388c8f12e15417946a3eef86c853b77059c3eb40
+      tag: bre-385-create-seeded-database@sha256:1a4d9a2ce495a1e7976ef35969ccdceb6347355a23335103270d61743b2ab719
