@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: QA-689-public-api-get-subscription-details@sha256:29e3bc102ec7e18aa2f293e943cbfd975e947e7c749ad8eac314076947c95bdb
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: QA-689-public-api-get-subscription-details@sha256:c46e4618ad2ee00972fb5c6f8eb584ecfd45d5ce656f3a472832a09d7bd7fa6d
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: QA-689-public-api-get-subscription-details@sha256:426520e6dbd67ff6f822f1edb0462463c0c4f0258c97471cbf79bf857659244a
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: QA-689-public-api-get-subscription-details@sha256:3a3da50431e332cd62dddc1c9c3e558c604b69a1b859c81e8c32e0899d331e8b
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: QA-689-public-api-get-subscription-details@sha256:54467c55bf3feded5a08f5fae36ee2d70ac708594ae4fc19b9bab4d7a1c66557
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: QA-689-public-api-get-subscription-details@sha256:eb9b499529608659772613232e61b42cda4bd27877aa188606347983aaead707
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: QA-689-public-api-get-subscription-details@sha256:637c535bf55df771759dc17b82655c5955f480b02bacc4aa2647330b7caa3151
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: QA-689-public-api-get-subscription-details@sha256:7fbb14b558a2f1d86d52e61e33f7c768695b4cd952020ab5777711e2be56a77d
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: QA-689-public-api-get-subscription-details@sha256:6165c0a979f9515306b39007fe439719c6a3f8c5bbb61d1a71805991300e3486
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: QA-689-public-api-get-subscription-details@sha256:9e3be34c2f2c71c095c7ddf63c4820dd9afacbf56075861fdd82601c31a90699
