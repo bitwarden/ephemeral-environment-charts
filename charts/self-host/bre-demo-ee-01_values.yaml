@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: BRE-demo-ee-01@sha256:7981855743e1adb4d5ce7ea14a9c2e3e2b13cf4a559fc3e9e997ef962993be5b
+      tag: BRE-demo-ee-01@sha256:be7902b3b0a7683673fa0d9da2fd62334e2cfd8b1b2a700be8d0d38776b4c697
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: BRE-demo-ee-01@sha256:2f6657e16afa66f3f5864dca12c2d7311fa8b97d7f8e259a47dfd8ffaaf4de18
+      tag: BRE-demo-ee-01@sha256:2691b52e8786f73af682ad4ffdbfe7a0af5d28d5b8169543efebbd6fa082b7c7
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: BRE-demo-ee-01@sha256:b5a4696683ffe2c9b5072796d20592880c6be57eb596800acee5051c5bb16375
+      tag: BRE-demo-ee-01@sha256:33861b05b85beacfd18dff8e1fc3a25e3697eec650e206de3b62760763196e21
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: BRE-demo-ee-01@sha256:381075f3fcefc2981de70b57b2560817e616340fa553e6dad5b0f66740e3044d
+      tag: BRE-demo-ee-01@sha256:0972b6670cc6bc226df84c49a908663eb69d56c58d1a61763976eb3ed380a21a
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: BRE-demo-ee-01@sha256:c0195f84089ba293c47168476f2a2c3d47534919024e36ce127c0dc5e7e5e4ab
+      tag: BRE-demo-ee-01@sha256:4ccf94ab2c18f554280dd3e13ecffd4b3bbeb52b57a8dd84215fc86228054ad5
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: BRE-demo-ee-01@sha256:e6fa97f7d904337752ca49e30a4e4c68a8f533dd1b789a2a8b07cf15313008a3
+      tag: BRE-demo-ee-01@sha256:8f9bc1ee9ebd9898e19fe0a9e76dda996a145d421f280acf7a609c057e8288f6
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: BRE-demo-ee-01@sha256:2b4bfa61e762b1de00038ed8dabdd029b1f43626fa590b01aaea1e26fd55951a
+      tag: BRE-demo-ee-01@sha256:52c5a9df62bfcc45d4c2a05b83eb6a00d2fa6cf3bc01642c9bcc780b868df9f5
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: BRE-demo-ee-01@sha256:3d3d322687a632a908ed694dd0eeb264145f885392eef025be3c5a07f6161e48
+      tag: BRE-demo-ee-01@sha256:dc5c78e44b131a5aecd4df821b111005346c0a6bd9f79f5787d72e4b3b4080b0
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: BRE-demo-ee-01@sha256:ba6414b81169b7545526d7af98680e69d84701a76525f38f920934df53dcac51
+      tag: BRE-demo-ee-01@sha256:42ff20c0ee6953af0a1c6c3bb7d57eb9a80c08eb2a52459cfd57f39067da3c29
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: BRE-demo-ee-01@sha256:c825297947da25e56c1d307b353cd140cf421c05243535c8dd9b2258b0fc4dab
+      tag: BRE-demo-ee-01@sha256:325f25f2f6034a70429f5ec8cddf36440e4979dd73d7d06a18cab08aa7cabddd
