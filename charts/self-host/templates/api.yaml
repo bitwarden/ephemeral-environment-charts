@@ -24,6 +24,8 @@ spec:
       app: {{ template "bitwarden.api" . }}
   template:
     metadata:
+      annotations:
+        checksum/feature-flags-config: {{ include ( print $.Template.BasePath "/pre-install-hook-feature-flags.yaml") . | sha256sum }}
       labels:
         app: {{ template "bitwarden.api" . }}
         app.kubernetes.io/component: api
