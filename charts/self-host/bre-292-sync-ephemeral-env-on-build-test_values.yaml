@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:61447faaccdd5f8b2eeddddf45f8bc8d8361ded965a44172ff9e5de48f5fcd16
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:b16e36daf69e8f5688edf32588ad6c6cbfa5434ba6f14407044fbcc049920c1f
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:6d909f18744676beba38e2ce235d8989029526210077606f9b1bf72563ea7c09
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:d0440ca07b5fb230b1d066e7a116d042a450d3890f9977fa776a0bb1b78d50c2
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:14fccc2cd3fe194c08a1c771f35114805b122ad8e2a10ed793fa4859517645f1
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:ecce925bbc893b3256814c686e590077e09417347deb12d1e05be74b7f301a72
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:75c27fe4747eb27a1223025fbebd75ada4126ef2d3cb0d909c20dcd160207234
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:4326e9e82199aee4d01d95b97c1793f9a5ff5b246fb06538ccc70c16b1bd4162
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:5b0fc243aa3edf85257c281778ee22b8ac5b74b9d744ebb84aa5570fcdff27ff
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: BRE-292-sync-ephemeral-env-on-build-test@sha256:201604fd955f6d3ad50f35e9bfbbc17e9c5bdab7717902143c3270c16a75f47f
