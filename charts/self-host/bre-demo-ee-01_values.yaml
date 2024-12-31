@@ -1,3 +1,5 @@
+featureFlags:
+  generator-tools-modernization: true
 component:
   admin:
     image:
