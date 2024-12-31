@@ -35,10 +35,11 @@ component:
     image:
       name: bitwardenprod.azurecr.io/sso
       tag: BRE-demo-ee-01@sha256:b1e2fbf48834a442b342b4b64b7d296caa11a10b41597081ad9d01c3d6033973
-featureFlags:
-  generator-tools-modernization: true
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
       tag: BRE-demo-ee-01@sha256:da650dace3d2ea31e09f603747dad9d0b0dcdff699222f3adb4ed15af355b341
+featureFlags:
+  generator-tools-modernization: true
+
