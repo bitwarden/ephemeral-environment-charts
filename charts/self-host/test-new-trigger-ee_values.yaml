@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: test-new-trigger-ee@sha256:8a52f3e5f68cc8a1ecc2805bdd4263ca0508a807a47e83796397a58d4c619152
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: test-new-trigger-ee@sha256:bb6f5fc0167c78a70a52c0f1fdfd3178fb515b844c22bfcdb1fe335d602f5e5e
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: test-new-trigger-ee@sha256:89ae07a44b5d694fdc5ec0a43936b7cd88e61e18f115de0c43ea62c2baa8c16d
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: test-new-trigger-ee@sha256:c1467bf1ad51c3725ffe12b522ca78c60f623588a0b169b4348d11db687d933f
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: test-new-trigger-ee@sha256:1043a686fda8c5962dffb742c2c9de96a5fc469a38e4ba9361f7ae3d477c3363
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: test-new-trigger-ee@sha256:9eb2f99764f59ed4c3f73a03cb2a9e97bb301b20e83de25e1d0a02a40ca9890c
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: test-new-trigger-ee@sha256:aa819d3812fe1eeb944c628e0a83ce76b92492a1331437c94d3efc8b10de8cf4
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: test-new-trigger-ee@sha256:d69b41bbe603a70750a67d969582375b2c95b20cba6627ba58bb4d9323eef489
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: test-new-trigger-ee@sha256:31aff360b97978cd41c9e3577a499c1787d9f00659fb9fb4cff8f33fcec0f0a0
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: test-new-trigger-ee@sha256:a5c0f4c46cba5ec3b97f8adfda9223765bfa79c43ce58339987f9aa0a4e13b39
