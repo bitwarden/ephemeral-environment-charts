@@ -30,6 +30,10 @@ extensions:
       tag: latest
     service:
       port: 8978
+  splunk:
+    enabled: true
+    annotations: {}
+    version: 9.3
 
 general:
   # Generate identity certificate

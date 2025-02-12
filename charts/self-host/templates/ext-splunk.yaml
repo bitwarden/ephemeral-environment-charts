@@ -1,0 +1,90 @@
+{{- if .Values.extensions.splunk.enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "bitwarden.fullname" . }}-splunk
+  namespace: {{ .Release.Namespace }}
+  annotations: {{ toYaml .Values.extensions.splunk.annotations | nindent 4 }}
+  labels:
+    app: {{ template "bitwarden.fullname" . }}-splunk
+    app.kubernetes.io/component: splunk
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: {{ template "bitwarden.fullname" . }}-splunk
+  template:
+    metadata:
+      labels:
+        app: {{ template "bitwarden.fullname" . }}-splunk
+    spec:
+      containers:
+        - name: splunk
+          image: "splunk/splunk:{{ .Values.extensions.splunk.version }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+            - containerPort: 8089
+          env:
+            - name: SPLUNK_START_ARGS
+              value: "--accept-license"
+            - name: SPLUNK_PASSWORD
+              value: "password"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "bitwarden.fullname" . }}-splunk
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "bitwarden.fullname" . }}-splunk
+    app.kubernetes.io/component: splunk
+spec:
+  selector:
+    app: {{ template "bitwarden.fullname" . }}-splunk
+  ports:
+    - port: 8000
+      targetPort: 8000
+    - port: 8089  
+      targetPort: 8089
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress  
+metadata:
+  name: {{ template "bitwarden.fullname" . }}-splunk-ingress
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    {{- if .Values.argoCDSupport }}
+    link.argocd.argoproj.io/environment: "Go to Splunk|https://splunk.{{ .Values.general.domain }}"
+    {{- end }}
+    {{- if .Values.general.ingress.tls.clusterIssuer }}
+    cert-manager.io/cluster-issuer: {{ .Values.general.ingress.tls.clusterIssuer }}
+    {{- end }}
+  labels:
+    app.kubernetes.io/component: ingress
+{{ include "bitwarden.labels" . | indent 4 }}
+spec:
+  ingressClassName: {{ .Values.general.ingress.className }}
+  rules:
+    - host: splunk.{{ .Values.general.domain }}
+      http:
+        paths:
+          - path: /splunk
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{ template "bitwarden.fullname" . }}-splunk
+                port: 
+                  number: 8000
+  tls:
+    - hosts:
+      - splunk.{{ .Values.general.domain }}
+      {{- if .Values.general.ingress.tls.name }}
+      secretName: {{ .Values.general.ingress.tls.name }}-splunk
+      {{- end }}
+{{- end }}
