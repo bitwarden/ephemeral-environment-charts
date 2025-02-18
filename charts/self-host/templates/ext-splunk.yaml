@@ -38,17 +38,13 @@ spec:
           - "-c"
           args:
           - |
-              # Get the artifact ID from ${{ .Values.extensions.splunk.bitwardenSplunkAppArtifact.artifactURL }}.
               ARTIFACT_ID=$(echo "{{ .Values.extensions.splunk.bitwardenSplunkAppArtifact.artifactURL }}" | awk -F'/' '{print $NF}')
+              
+              wget --header="Accept: application/vnd.github+json" \
+                   --header="Authorization: Bearer ${GITHUB_TOKEN}" \
+                   -O /bitwarden/splunk/bitwarden-splunk-app.zip \
+                   "https://api.github.com/repos/bitwarden/splunk/actions/artifacts/$ARTIFACT_ID/zip"
 
-              # Download the artifact from the GitHub API.
-              curl -L \
-                  -H "Accept: application/vnd.github+json" \
-                  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-                  https://api.github.com/repos/bitwarden/splunk/actions/artifacts/$ARTIFACT_ID/zip \
-                  -o /bitwarden/splunk/bitwarden-splunk-app.zip
-
-              # Unzip the artifact.
               unzip /bitwarden/splunk/bitwarden-splunk-app.zip -d /bitwarden/splunk
 
               # Compress the unzipped artifact into a .tgz file, I don't think this is needed just yet. Going to try without it.
@@ -116,7 +112,7 @@ spec:
             backend:
               service:
                 name: {{ template "bitwarden.fullname" . }}-splunk
-                port: 
+                port:
                   number: 8000
   tls:
     - hosts:
