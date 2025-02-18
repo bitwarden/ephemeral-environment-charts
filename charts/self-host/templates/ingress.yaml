@@ -6,6 +6,9 @@ metadata:
   name: {{ template "bitwarden.ingress" . }}
   namespace: {{ .Release.Namespace }}
   annotations:
+    {{- if .Values.argoCDSupport }}
+    link.argocd.argoproj.io/environment: "Go to Environment|https://{{ .Values.general.domain }}"
+    {{- end }}
     {{- if .Values.general.ingress.tls.clusterIssuer }}
     cert-manager.io/cluster-issuer: {{ .Values.general.ingress.tls.clusterIssuer }}
     {{- end }}
@@ -131,7 +134,17 @@ spec:
                 name: {{ template "bitwarden.admin" . }}
                 port:
                   number: 5000
-
+{{- if .Values.database.enabled }}
+          - path: {{ .Values.general.ingress.paths.mssql.path }}
+            {{ if .Values.general.ingress.paths.mssql.pathType }}
+            pathType: {{ .Values.general.ingress.paths.mssql.pathType }}
+            {{- end }}
+            backend:
+              service:
+                name: {{ template "bitwarden.mssql" . }}
+                port:
+                  number: 1433
+{{- end }}
 {{- if .Values.component.keyConnector.enabled }}
           - path: {{ .Values.general.ingress.paths.keyConnector.path }}
             {{ if .Values.general.ingress.paths.keyConnector.pathType }}

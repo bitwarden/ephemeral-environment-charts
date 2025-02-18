@@ -1,8 +1,8 @@
 {{- define "bitwarden.coreVersionDefault" -}}
-{{- "2024.6.1" -}}
+{{- "2024.9.2" -}}
 {{- end -}}
 {{- define "bitwarden.webVersionDefault" -}}
-{{- "2024.6.1" -}}
+{{- "2024.10.0" -}}
 {{- end -}}
 
 {{/*
@@ -244,4 +244,39 @@ Name of the shared cloud resource secret
 */}}
 {{- define "bitwarden.sharedCloudResourcesSecret" -}}
 {{ template "bitwarden.fullname" . }}-shared-cloud-resources
+{{- end -}}
+
+
+{{/*
+Name of the extension: dbClient
+*/}}
+{{- define "bitwarden.dbClient" -}}
+{{ template "bitwarden.fullname" . }}-db-client
+{{- end -}}
+
+
+{{/*
+GitHub endpoints
+*/}}
+{{- define "bitwarden.endpoint.web" -}}
+https://{{ .Values.general.domain }}/
+{{- end -}}
+
+{{- define "bitwarden.endpoint.api" -}}
+https://{{ .Values.general.domain }}/api
+{{- end -}}
+
+{{- define "bitwarden.endpoint.identity" -}}
+https://{{ .Values.general.domain }}/identity
+{{- end -}}
+
+{{/*
+Argo CD environment URL
+*/}}
+{{- define "bitwarden.endpoint.argocd-badge"}}
+https://bw-akp-sandbox-01.cd.akuity.cloud/api/badge?name={{ .Release.Name }}&revision=true&showAppName=true
+{{- end -}}
+
+{{- define "bitwarden.endpoint.argocd"}}
+https://bw-akp-sandbox-01.cd.akuity.cloud/applications/argocd/{{ .Release.Name }}
 {{- end -}}

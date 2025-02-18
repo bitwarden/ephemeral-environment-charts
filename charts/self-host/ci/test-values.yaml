@@ -15,7 +15,29 @@ featureFlags:
 # Components still require sync wave annotations and can be defined in the component section.
 argoCDSupport: true
 
+# GitHub values to be used for interacting with the GitHub API.
+# These are not required, but functionality will be disabled if they are not provided.
+github:
+  project:
+  owner:
+  prId:
+
+# Optional extensions that can be toggled for additional functionality.
+extensions:
+  dbClient:
+    enabled: true
+    annotations: {}
+    image:
+      name: dbeaver/cloudbeaver
+      tag: latest
+    service:
+      port: 8978
+
 general:
+  # Generate identity certificate
+  # Defaults to a shared certificate for encryption (required for dataset sharing)
+  # Environment must be recreated when modified
+  generateIdentityCertificate: true
   # Domain name for the service
   domain: "bitwarden.localhost"
   ingress:
@@ -70,6 +92,9 @@ general:
         pathType: ImplementationSpecific
       keyConnector:
         path: /key-connector/(.*)
+        pathType: ImplementationSpecific
+      mssql:
+        path: /(mssql/.*)
         pathType: ImplementationSpecific
 
   # Override application container version tags.  Theses will be versioned with the chart and need not be changed in most circumstances.
@@ -126,6 +151,7 @@ component:
     # Image name, tag, and pull policy
     image:
       name: bitwarden/admin
+      tag: "2026.0.0"
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -246,8 +272,6 @@ component:
   keyConnector:
     # Enable or disable the Key Connector component
     enabled: true
-    # Key Connector version
-    version: "2024.4.0"
     # Additional deployment labels
     labels: {}
     # Additional deployment annotations
@@ -256,6 +280,8 @@ component:
     # Image name, tag, and pull policy
     image:
       name: bitwarden/key-connector
+      # Key Connector version
+      tag: "2024.4.0"
       # The pod resource requirements.  You can adjust these up and down for your environment
       resources:
         requests:
@@ -364,6 +390,7 @@ supportComponents:
   dbMigrator:
     image:
       name: bitwarden/mssqlmigratorutility
+      tag: "2026.0.0"
   certGenerator:
     image:
       name: docker.io/nginx

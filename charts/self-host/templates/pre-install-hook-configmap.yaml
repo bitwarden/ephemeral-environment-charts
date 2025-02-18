@@ -10,7 +10,7 @@ metadata:
     {{- if .Values.argoCDSupport }}
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-2"
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
     {{ end }}
 data:
   ACCEPT_EULA: "Y"
@@ -38,6 +38,9 @@ data:
   globalSettings__mail__smtp__host: "{{ .Values.general.email.smtpHost }}"
   globalSettings__mail__smtp__port: "{{ .Values.general.email.smtpPort }}"
   globalSettings__mail__smtp__ssl: "{{ .Values.general.email.smtpSsl }}"
+  globalSettings__mail__smtp__trustServer: "{{ .Values.general.email.smtpTrustServer }}"
+  globalSettings__mail__smtp__sslOverride: "{{ .Values.general.email.smtpSslOverride }}"
+  globalSettings__mail__smtp__startTls: "{{ .Values.general.email.smtpStartTls }}"
 {{- if not (and .Values.volume.logs .Values.volume.logs.enabled) }}
   globalSettings__logDirectory: "/dev/null"
 {{- end }}
@@ -64,6 +67,9 @@ data:
   adminSettings__admins: {{ .Values.general.admins | quote }}
   LOCAL_UID: "1000"
   LOCAL_GID: "1000"
+  GITHUB_PR_ID: {{ .Values.github.prId | quote }}
+  GITHUB_OWNER: {{ .Values.github.owner | quote }}
+  GITHUB_PROJECT: {{ .Values.github.project | quote }}
 
 ---
 apiVersion: v1
@@ -77,7 +83,7 @@ metadata:
     {{- if .Values.argoCDSupport }}
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "0"
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
     {{ end }}
 data:
   app-id.json: |-
@@ -111,7 +117,7 @@ metadata:
     {{- if .Values.argoCDSupport }}
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "0"
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
     {{ end }}
 data:
   keyConnectorSettings__webVaultUri: "https://{{ .Values.general.domain }}"

@@ -19,10 +19,70 @@
             "type": "boolean",
             "description": "Converts sync hooks to Argo CD sync waves to support sync operations."
         },
+        "github": {
+            "type": "object",
+            "required": [],
+            "properties": {
+                "project": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "prId": {
+                    "type": "string"
+                }
+            }
+        },
+        "extensions": {
+            "type": "object",
+            "required": [],
+            "properties": {
+                "dbClient": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
+                        "image": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "tag": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "service": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "port": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "general": {
             "type": "object",
             "required": [],
             "properties": {
+                "generateIdentityCertificate": {
+                    "type": "boolean",
+                    "description": "Generate identity certificate. Defaults to a shared certificate for encryption (required for dataset sharing). Environment must be recreated when modified."
+                },
                 "domain": {
                     "type": "string"
                 },
@@ -285,6 +345,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -480,6 +543,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -675,6 +741,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -870,6 +939,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1065,6 +1137,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1260,6 +1335,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1441,9 +1519,6 @@
                         "enabled": {
                             "type": "boolean"
                         },
-                        "version": {
-                            "type": "string"
-                        },
                         "annotations": {
                             "type": "object",
                             "required": [],
@@ -1459,6 +1534,9 @@
                             "type": "object",
                             "properties": {
                                 "name": {
+                                    "type": "string"
+                                },
+                                "tag": {
                                     "type": "string"
                                 }
                             }
@@ -1596,6 +1674,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1794,6 +1875,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1989,6 +2073,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -2186,6 +2273,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },

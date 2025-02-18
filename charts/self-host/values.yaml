@@ -13,7 +13,29 @@ featureFlags: {}
 # Components still require sync wave annotations and can be defined in the component section.
 argoCDSupport: true
 
+# GitHub values to be used for interacting with the GitHub API.
+# These are not required, but functionality will be disabled if they are not provided.
+github:
+  project:
+  owner:
+  prId:
+
+# Optional extensions that can be toggled for additional functionality.
+extensions:
+  dbClient:
+    enabled: false
+    annotations: {}
+    image:
+      name: dbeaver/cloudbeaver
+      tag: latest
+    service:
+      port: 8978
+
 general:
+  # Generate identity certificate
+  # Defaults to a shared certificate for encryption (required for dataset sharing)
+  # Environment must be recreated when modified
+  generateIdentityCertificate: false
   # Domain name for the service
   domain: "REPLACE"
   ingress:
@@ -23,9 +45,13 @@ general:
     className: "nginx"
      ## - Annotations to add to the Ingress resource.
     annotations:
-      # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      # nginx.ingress.kubernetes.io/use-regex: "true"
-      # nginx.ingress.kubernetes.io/rewrite-target: /$1
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
+      # nginx.ingress.kubernetes.io/proxy-body-size: 500m
+      # nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+      # nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+      # nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
     ## - Labels to add to the Ingress resource
     labels: {}
     # Certificate options
@@ -69,6 +95,9 @@ general:
       keyConnector:
         path: /key-connector/(.*)
         pathType: ImplementationSpecific
+      mssql:
+        path: /(mssql/.*)
+        pathType: ImplementationSpecific
 
   # Override application container version tags.  Theses will be versioned with the chart and need not be changed in most circumstances.
   coreVersionOverride: ""
@@ -81,11 +110,17 @@ general:
     # Email address used for invitations, typically no-reply@smtp-host
     replyToEmail: "no-reply@bitwarden.localhost"
     # Your SMTP server hostname (recommended) or IP address
-    smtpHost: "smtp.gmail.com"
+    smtpHost: "smtp.sendgrid.net"
     # The SMTP port used by the SMTP server
     smtpPort: "587"
     # Whether your SMTP server uses an encryption protocol, "true" for SSL, "false" for TLS
     smtpSsl: "false"
+    # Specify true to explicitly trust the certificate presented by the SMTP server (not recommended for production).
+    smtpTrustServer: "false"
+    # Specify true to use SSL (not TLS) on port 25.
+    smtpSslOverride: "false"
+    # Specify true to force STARTTLS (Opportunistic TLS).
+    smtpStartTls: "false"
   # Custom labels to add throughout the installation
   labels: {}
   # Specifies the access mode for persistent volume claims.  This should not be changed in most cases, and the allowable
@@ -112,7 +147,7 @@ secrets:
   secretProviderClass:
 
   # Azure Key Vault name for shared cloud resources secret
-  azureKeyVaultName: CI
+  azureKeyVaultName: ephemeral-env-kv
 
 # Settings for individual service containers
 component:
@@ -124,7 +159,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/admin
+      name: bitwardenprod.azurecr.io/admin
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -146,7 +181,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/api
+      name: bitwardenprod.azurecr.io/api
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -168,7 +203,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/attachments
+      name: bitwardenprod.azurecr.io/attachments
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -190,7 +225,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/events
+      name: bitwardenprod.azurecr.io/events
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -212,7 +247,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/icons
+      name: bitwardenprod.azurecr.io/icons
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -234,7 +269,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/identity
+      name: bitwardenprod.azurecr.io/identity
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -252,15 +287,15 @@ component:
   keyConnector:
     # Enable or disable the Key Connector component
     enabled: false
-    # Key Connector version
-    version: "2024.4.0"
     # Additional deployment annotations
     annotations: {}
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/key-connector
+      name: bitwardenprod.azurecr.io/key-connector
+    # Key Connector version
+      tag: "2024.8.0"
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -288,7 +323,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/notifications
+      name: bitwardenprod.azurecr.io/notifications
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -312,7 +347,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/scim
+      name: bitwardenprod.azurecr.io/scim
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -334,7 +369,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/sso
+      name: bitwardenprod.azurecr.io/sso
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -356,7 +391,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/web
+      name: bitwardenprod.azurecr.io/web
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -375,7 +410,7 @@ component:
 supportComponents:
   dbMigrator:
     image:
-      name: bitwarden/mssqlmigratorutility
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
   certGenerator:
     image:
       name: docker.io/nginx
@@ -448,6 +483,7 @@ database:
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/hook-delete-policy: HookFailed
   # Labels to add to the MSSQL deployment
   labels: {}
   # Image name, tag, and pull policy
@@ -470,38 +506,41 @@ database:
       # Use an existing PVC by specifying the name.
       # existingClaim: claimName
       # Override the accessMode specified in general.volumeAccessMode
-      # accessMode: ReadWriteOnce
+      accessMode: ReadWriteOnce
       # Override the storageClass specified in sharedStorageClassName
-      # storageClass: "shared-storage"
-      size: 1Gi
+      storageClass: "managed"
+      size: 10Gi
       labels: {}
       annotations:
         argocd.argoproj.io/hook: PreSync
         argocd.argoproj.io/sync-wave: "0"
+        argocd.argoproj.io/hook-delete-policy: HookFailed
     data:
       # Use an existing PVC by specifying the name.
       # existingClaim: claimName
       # Override the accessMode specified in general.volumeAccessMode
-      # accessMode: ReadWriteOnce
+      accessMode: ReadWriteOnce
       # Override the storageClass specified in sharedStorageClassName
-      # storageClass: "shared-storage"
-      size: 10Gi
+      storageClass: "managed"
+      size: 20Gi
       labels: {}
       annotations:
         argocd.argoproj.io/hook: PreSync
         argocd.argoproj.io/sync-wave: "0"
+        argocd.argoproj.io/hook-delete-policy: HookFailed
     log:
       # Use an existing PVC by specifying the name.
       # existingClaim: claimName
       # Override the accessMode specified in general.volumeAccessMode
-      # accessMode: ReadWriteOnce
+      accessMode: ReadWriteOnce
       # Override the storageClass specified in sharedStorageClassName
-      # storageClass: "shared-storage"
+      storageClass: "managed"
       size: 10Gi
       labels: {}
       annotations:
         argocd.argoproj.io/hook: PreSync
         argocd.argoproj.io/sync-wave: "0"
+        argocd.argoproj.io/hook-delete-policy: HookFailed
   # Specifies the strategy used to replace old Pods by new ones. The value can be "OnDelete" or "RollingUpdate". "OnDelete" is the default value.
   # When set to OnDelete, the SQL pod will not be recreated automatically on update.  It must be manually deleted to update.
   updateStrategy: RollingUpdate
