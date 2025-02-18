@@ -34,6 +34,8 @@ extensions:
     enabled: true
     annotations: {}
     version: 9.3
+    bitwardenSplunkAppArtifact:
+      artifactURL: "https://github.com/bitwarden/splunk/actions/runs/13330546200/artifacts/2592792926"
 
 general:
   # Generate identity certificate
