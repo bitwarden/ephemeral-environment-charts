@@ -52,9 +52,6 @@ spec:
                   -o /bitwarden/splunk/bitwarden-splunk-app.zip
 
               unzip /bitwarden/splunk/bitwarden-splunk-app.zip -d /bitwarden/splunk
-
-              # Compress the unzipped artifact into a .tgz file, I don't think this is needed just yet. Going to try without it.
-              # tar -czf /bitwarden/splunk/bitwarden_event_logs.tgz -C /bitwarden/splunk bitwarden_event_logs
       containers:
         - name: splunk
           image: "splunk/splunk:{{ .Values.extensions.splunk.version }}"
