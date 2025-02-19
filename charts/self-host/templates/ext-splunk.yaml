@@ -20,7 +20,7 @@ spec:
     metadata:
       labels:
         app: {{ template "bitwarden.fullname" . }}-splunk
-        bitwarden.com/splunkArtifact: {{ .Values.extensions.splunk.bitwardenSplunkAppArtifact.artifactURL | quote }}
+        bitwarden.com/splunkArtifactId: {{ regexFind "[0-9]+$" .Values.extensions.splunk.bitwardenSplunkAppArtifact.artifactURL | quote }}
     spec:
       volumes:
       - name: bitwarden-splunk-artifact
@@ -31,6 +31,11 @@ spec:
           volumeMounts:
           - name: bitwarden-splunk-artifact
             mountPath: /bitwarden/splunk
+          env:
+          - name: ARTIFACT_ID
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['bitwarden.com/splunkArtifactId']
           envFrom:
           - secretRef:
               name: {{ template "bitwarden.sharedCloudResourcesSecret" . }}
@@ -39,8 +44,6 @@ spec:
           - "-c"
           args:
           - |
-              ARTIFACT_ID=$(echo "{{ .Values.extensions.splunk.bitwardenSplunkAppArtifact.artifactURL }}" | awk -F'/' '{print $NF}')
-              
               # Download the artifact from the GitHub API.
               curl -L \
                   -H "Accept: application/vnd.github+json" \
