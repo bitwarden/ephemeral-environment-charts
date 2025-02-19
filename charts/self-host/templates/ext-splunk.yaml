@@ -20,6 +20,7 @@ spec:
     metadata:
       labels:
         app: {{ template "bitwarden.fullname" . }}-splunk
+        bitwarden.com/splunkArtifact: {{ .Values.extensions.splunk.bitwardenSplunkAppArtifact.artifactURL | quote }}
     spec:
       volumes:
       - name: bitwarden-splunk-artifact
