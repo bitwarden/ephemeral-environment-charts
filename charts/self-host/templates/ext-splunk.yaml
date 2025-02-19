@@ -79,7 +79,7 @@ spec:
               memory: 1024Mi
             limits:
               cpu: 500m
-              memory: 2048mi
+              memory: 2048Mi
           env:
             - name: SPLUNK_START_ARGS
               value: "--accept-license"
