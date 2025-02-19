@@ -40,7 +40,7 @@ spec:
           - |
               ARTIFACT_ID=$(echo "{{ .Values.extensions.splunk.bitwardenSplunkAppArtifact.artifactURL }}" | awk -F'/' '{print $NF}')
               
-              wget --header="Accept: application/vnd.github+json" \
+              wget --no-check-certificate --header="Accept: application/vnd.github+json" \
                    --header="Authorization: Bearer ${GITHUB_TOKEN}" \
                    -O /bitwarden/splunk/bitwarden-splunk-app.zip \
                    "https://api.github.com/repos/bitwarden/splunk/actions/artifacts/$ARTIFACT_ID/zip"
