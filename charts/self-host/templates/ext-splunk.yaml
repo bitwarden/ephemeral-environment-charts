@@ -54,8 +54,10 @@ spec:
           image: "splunk/splunk:{{ .Values.extensions.splunk.version }}"
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8000
-            - containerPort: 8089
+            - name: web
+              containerPort: 8000
+            - name: api  
+              containerPort: 8089
           env:
             - name: SPLUNK_START_ARGS
               value: "--accept-license"
@@ -79,9 +81,11 @@ spec:
   selector:
     app: {{ template "bitwarden.fullname" . }}-splunk
   ports:
-    - port: 8000
+    - name: web
+      port: 8000
       targetPort: 8000
-    - port: 8089  
+    - name: api
+      port: 8089  
       targetPort: 8089
 
 ---
