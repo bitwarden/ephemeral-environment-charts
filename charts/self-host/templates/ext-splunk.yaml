@@ -73,6 +73,13 @@ spec:
               port: 8000
             initialDelaySeconds: 300
             periodSeconds: 10
+          resources:
+            requests:
+              cpu: 250m
+              memory: 1024Mi
+            limits:
+              cpu: 500m
+              memory: 2048mi
           env:
             - name: SPLUNK_START_ARGS
               value: "--accept-license"
