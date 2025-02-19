@@ -31,11 +31,11 @@ extensions:
     service:
       port: 8978
   splunk:
-    enabled: false
+    enabled: true
     annotations: {}
     version: 9.3
     bitwardenSplunkAppArtifact:
-      artifactURL: ""
+      artifactURL: "https://github.com/bitwarden/splunk/actions/runs/13142043264/artifacts/2535834761"
 
 general:
   # Generate identity certificate
