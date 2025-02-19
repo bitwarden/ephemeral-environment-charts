@@ -121,6 +121,13 @@ spec:
                 name: {{ template "bitwarden.fullname" . }}-splunk
                 port:
                   number: 8000
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ template "bitwarden.fullname" . }}-splunk
+                port:
+                  number: 8089
   tls:
     - hosts:
       - splunk.{{ .Values.general.domain }}
