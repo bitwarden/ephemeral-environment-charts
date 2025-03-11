@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:ac6870d9a96eb834b09db1f74e9228c8589dcf0442222d9dc9d28310fe5baef6
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:8da043bdad25553017c8b74f5afe9e15e15bb429469f5aec86b44a5ccd4ec857
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:155cb4926fd1e5f71e847b1ea1517bf18a1508f46de6775aa119003fffe9b819
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:d644dc9d6369107a703d4705d93f2b3aed67d9000e1b57e09d04534f3b2329af
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:860466d284632fcda4ece2be6d6a3a76a1aad2a23475cfe0fdfeca43d58a9c97
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:1e8e052dc79f3d2d627951727e62362f1aa1c91426c5ce33d2f183f644fdceb8
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:f04ad23d823031b2d477474a965fe291d21886f53b21bd5d25a6c58ebe1fb304
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:0b79c9a8afcb7ccfa56edb86fcfe895c1241385ee535ecbce19c2b99809d8c5d
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:523f10b2cd2551da783303dad9ffb029bdea30eab63d8334b0028d27de430d06
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: sdk-decrypt@
+      tag: sdk-decrypt@sha256:9e1b56d268ecf7ced104d6b8a505f4ed503d81ae1c70d23500bf3250a342c034
