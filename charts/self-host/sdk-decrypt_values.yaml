@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: sdk-decrypt@
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: sdk-decrypt@
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: sdk-decrypt@
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: sdk-decrypt@
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: sdk-decrypt@
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: sdk-decrypt@
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: sdk-decrypt@
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: sdk-decrypt@
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: sdk-decrypt@
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: sdk-decrypt@
