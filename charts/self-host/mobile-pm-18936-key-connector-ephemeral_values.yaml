@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: mobile-PM-18936-key-connector-ephemeral@
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: mobile-PM-18936-key-connector-ephemeral@
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: mobile-PM-18936-key-connector-ephemeral@
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: mobile-PM-18936-key-connector-ephemeral@
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: mobile-PM-18936-key-connector-ephemeral@
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: mobile-PM-18936-key-connector-ephemeral@
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: mobile-PM-18936-key-connector-ephemeral@
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: mobile-PM-18936-key-connector-ephemeral@
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: mobile-PM-18936-key-connector-ephemeral@
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: mobile-PM-18936-key-connector-ephemeral@
