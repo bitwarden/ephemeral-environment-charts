@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:3146a893d389a008d550f459b66158dc8b14c29213c22d7e28f9e331b7baa700
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:106791add00b520101ff042a1918d5d08baefb5214e0229ceebbd3baa5958264
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:d05da650974ba1a06289bc2cd400a67c3775524415594e3bdcdb4966ce0d1c31
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:ba44ad4b11be3fd0a976568b3267da99b9095e575f7391cc58a0a2dae21325fd
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:ec7bf09a6d4c204476371c69821588e38826c6654c0476d8e566cf7b18155152
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:d5b2184ac9cfb53984da1ee92da57dd5d00eb21f777d958a32483fbb43cf7f83
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:8f7ad77407a832f5dbf2d594367e21e1b843d0cf2b2e955320931fd3dc329e23
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:1828bf165c572267d1c1b46d09d3e0dedce22c12aee1cb45289cce5d35fd11b4
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:d4b4b70f4a9be0e15717970d010a4f79a9c241080fbb8fd705b02a63cad1ea61
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: mobile-PM-18936-key-connector-ephemeral@
+      tag: mobile-PM-18936-key-connector-ephemeral@sha256:cc625e4f0acf2d05a8402a42ff63e2ac1416dc033565084d2d470ba0a59936b8
