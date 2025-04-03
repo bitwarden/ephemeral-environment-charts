@@ -90,6 +90,10 @@ spec:
           mountPath: /etc/bitwarden/logs
           subPath: notifications
         {{- end }}
+        {{- if .Values.volume.caCertificates.enabled }}
+        - name: ca-certificates
+          mountPath: /etc/bitwarden/ca-certificates
+        {{- end }}
         {{- if .Values.featureFlags }}
         - name: feature-flags-config
           mountPath: /etc/bitwarden/core/flags.json
@@ -110,6 +114,11 @@ spec:
         - name: applogs
           persistentVolumeClaim:
             claimName: {{ default ( include "bitwarden.applogs" . ) .Values.volume.logs.existingClaim }}
+        {{- end }}
+        {{- if .Values.volume.caCertificates.enabled }}
+        - name: ca-certificates
+          configMap:
+            name: {{ .Values.volume.caCertificates.configMapName }}
         {{- end }}
         {{- if .Values.featureFlags }}
         - name: feature-flags-config
