@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: helm-chart-testing@
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: helm-chart-testing@
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: helm-chart-testing@
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: helm-chart-testing@
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: helm-chart-testing@
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: helm-chart-testing@
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: helm-chart-testing@
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: helm-chart-testing@
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: helm-chart-testing@
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: helm-chart-testing@
