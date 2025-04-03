@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      name: bitwardenprod.azurecr.io/admin
+      tag: ee-test-image-updater@
+  api:
+    image:
+      name: bitwardenprod.azurecr.io/api
+      tag: ee-test-image-updater@
+  attachments:
+    image:
+      name: bitwardenprod.azurecr.io/attachments
+      tag: ee-test-image-updater@
+  events:
+    image:
+      name: bitwardenprod.azurecr.io/events
+      tag: ee-test-image-updater@
+  icons:
+    image:
+      name: bitwardenprod.azurecr.io/icons
+      tag: ee-test-image-updater@
+  identity:
+    image:
+      name: bitwardenprod.azurecr.io/identity
+      tag: ee-test-image-updater@
+  notifications:
+    image:
+      name: bitwardenprod.azurecr.io/notifications
+      tag: ee-test-image-updater@
+  scim:
+    image:
+      name: bitwardenprod.azurecr.io/scim
+      tag: ee-test-image-updater@
+  sso:
+    image:
+      name: bitwardenprod.azurecr.io/sso
+      tag: ee-test-image-updater@
+supportComponents:
+  dbMigrator:
+    image:
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+      tag: ee-test-image-updater@
