@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:a87f88d8e7691b8342944ca685ab2f5d02cb928f8f3e0bb917d44f1247484ca5
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:be0efd4c62276ac4057bb99f04413c8beae2a3ba27beb18a31e21cc17512231a
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:ebdc32e667390debad481f1d04136c7d36f5ac2146d401df977126315755d1f8
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:5c7bb423506bf34b0d685fb3e1b187df24586f99be692fb7f20e981257e21805
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:96c7ce60cf4cfc8498d9eb8397e13e8bc6158825eef8b3715104bc406663a6ed
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:c84b235aaebad22c4892eae28de9731461dd63f8f279b3fc0a48efc3a087befd
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:6ea7763adb891640e28c43c624dc7c97d16fff85d6c352befcfda013cba11363
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:2ad7436433bbe289b92a4c5ccd25a4e871c02e5469fa6541f6d1da803f210aca
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:4f01b59885cecbb488dd1b11adc87f8ddb45da2c2601a4c5e8feaf160778b395
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: helm-chart-testing@
+      tag: helm-chart-testing@sha256:cf5982757e2449c8d31d8415bfd00c1c52749dcc017d5b6ef7a6bdff1d286c45
