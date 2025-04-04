@@ -1,18 +1,1 @@
-component:
-  admin:
-    image:
-      tag: ee-test-image-updater-1@sha256:43521cc9df3208dfc6d932b444d47320468b376f681e32ce2dab6f1411d2cb6a
-      name: bitwardenprod.azurecr.io/admin
-  api:
-    image:
-      tag: ee-test-image-updater-1@sha256:ae98e62fb5040ce7e4c308ce2f5822ba37616eb2897dbf05bad680ea6952eb16
-      name: bitwardenprod.azurecr.io/api
-  attachments:
-    image:
-      tag: ee-test-image-updater-1@sha256:4a7f16c02c51e0ad4a971b2f98355b7ad6587886b7863c53581bbd45c7023003
-      name: bitwardenprod.azurecr.io/attachments
-supportComponents:
-  dbMigrator:
-    image:
-      tag: ee-test-image-updater-1@sha256:3bf52fef5a584afa309baa21af5bb983487bb68474889db303dae6da36c5b9ca
-      name: bitwardenprod.azurecr.io/mssqlmigratorutility
+
