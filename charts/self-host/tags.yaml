@@ -1,5 +1,7 @@
 component:
   admin:
+    labels:
+      test: value
     image:
       tag: latest@sha256:d568cf4f230e510d4614d8b2b2f04c11c9c842e4898dfec3c28b684efb0a9839
       name: bitwardenprod.azurecr.io/admin
