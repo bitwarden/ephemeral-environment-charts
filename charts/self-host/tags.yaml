@@ -33,6 +33,10 @@ component:
     image:
       tag: latest@sha256:ce4f7b2e2fd8b51833734e6b28200c0f5a83aaf92f71dd7c7ea58247dbe5ecbc
       name: bitwardenprod.azurecr.io/sso
+  scim:
+    image:
+      tag: ee-test-image-updater@sha256:bf128ae1ff3148a949f1a2fd7275a8a9ac9baad8df3f309f0add0da3fdfc727d
+      name: bitwardenprod.azurecr.io/scim
 supportComponents:
   dbMigrator:
     image:
