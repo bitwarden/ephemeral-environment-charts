@@ -94,6 +94,7 @@ spec:
         - name: feature-flags-config
           mountPath: /etc/bitwarden/core/flags.json
           subPath: flags.json
+        {{- end }}
         {{- if .Values.volume.caCertificates.enabled }}
         - name: ca-certificates
           mountPath: /etc/bitwarden/ca-certificates
@@ -118,6 +119,7 @@ spec:
         - name: feature-flags-config
           configMap:
             name: {{ .Release.Name }}-feature-flags
+        {{- end }}
         {{- if .Values.volume.caCertificates.enabled }}
         - name: ca-certificates
           configMap:
@@ -143,3 +145,4 @@ spec:
   ports:
   - port: 5000
     targetPort: 5000
+    
