@@ -563,7 +563,7 @@ database:
 # You can specify raw Kubernetes manifests that will be applied before or after the base Helm install.
 # Please see the chart README in GitHub for more information and examples.
 rawManifests:
-  preInstall: []
+  preInstall:
   # E.g. add a custom certificate to your bitwarden installation.
   - apiVersion: v1
     kind: ConfigMap
