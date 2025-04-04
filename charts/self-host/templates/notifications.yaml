@@ -95,6 +95,10 @@ spec:
           mountPath: /etc/bitwarden/core/flags.json
           subPath: flags.json
         {{- end }}
+        {{- if .Values.volume.caCertificates.enabled }}
+        - name: ca-certificates
+          mountPath: /etc/bitwarden/ca-certificates
+        {{- end }}
         securityContext:
 {{ toYaml .Values.component.notifications.securityContext | indent 10 }}
       volumes:
@@ -116,6 +120,11 @@ spec:
           configMap:
             name: {{ .Release.Name }}-feature-flags
         {{- end }}
+        {{- if .Values.volume.caCertificates.enabled }}
+        - name: ca-certificates
+          configMap:
+            name: {{ .Values.volume.caCertificates.configMapName }}
+        {{- end }}
 
 ---
 apiVersion: v1
@@ -136,3 +145,4 @@ spec:
   ports:
   - port: 5000
     targetPort: 5000
+    
