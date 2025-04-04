@@ -565,13 +565,32 @@ database:
 rawManifests:
   preInstall: []
   # E.g. add a custom certificate to your bitwarden installation.
-  # - apiVersion: v1
-  #   kind: ConfigMap
-  #   metadata:
-  #     name: cacert
-  #   data:
-  #     rootca.crt: |
-  #       -----BEGIN CERTIFICATE-----
-  #       xxxx
-  #       -----END CERTIFICATE-----
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: cacert
+    data:
+      rootca.crt: |
+        -----BEGIN CERTIFICATE-----
+        MIIDpzCCAo+gAwIBAgIUUhtnfmMTi0LQl8tqCNQqqpfMES8wDQYJKoZIhvcNAQEL
+        BQAwYzELMAkGA1UEBhMCVVMxEzARBgNVBAgMClRlc3QgU3RhdGUxDTALBgNVBAcM
+        BFRlc3QxDTALBgNVBAoMBFRlc3QxDTALBgNVBAsMBFRlc3QxEjAQBgNVBAMMCWxv
+        Y2FsaG9zdDAeFw0yNTA0MDMxOTIzNDRaFw0yNTA0MDUxOTIzNDRaMGMxCzAJBgNV
+        BAYTAlVTMRMwEQYDVQQIDApUZXN0IFN0YXRlMQ0wCwYDVQQHDARUZXN0MQ0wCwYD
+        VQQKDARUZXN0MQ0wCwYDVQQLDARUZXN0MRIwEAYDVQQDDAlsb2NhbGhvc3QwggEi
+        MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCoiL0ECfkuiQl++VD16S77zz4w
+        MTvnqi36KhjlNeibe/otoz26xdWLU8S2xmV8y0+F+JKI+gYxhorvRrVzvAS60iZW
+        G3f6KMiiBqanUVORuGP3nslZbQoUbIgwzp7ZlW5xUgtAScRzbt8fv7Bg9tXT9Xzh
+        /DsQ9JHzRI1U+WFAXNXGPzf6PBoiZ2mUt6TocnGbG4+ST2mFWWdafT8/470w5jnd
+        pbiUtVrIf7NVABySl/rrKoUgYJWl6f7BAinRZhz4Mw3mUGaBvnHNz7ukZkzM+VP8
+        ms02q4d8JV6CeNs43+0YXhL/EYRqPGEiKEw6D3VNLkzz1Wwfn936AUHatsz3AgMB
+        AAGjUzBRMB0GA1UdDgQWBBQc8JXSHocJ6PTmQZLC/c1gKKssrzAfBgNVHSMEGDAW
+        gBQc8JXSHocJ6PTmQZLC/c1gKKssrzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3
+        DQEBCwUAA4IBAQBsUlJ/bMaP3QlkemQWAMl1YUNgA6jkl2HOgSrDvWocgvmCYwrW
+        NzYSJ7NTi8rTREkQEVeS0MLGan8u6n9n38Ctc9e8qaQyIB3bUohvK7WHDDJ/ONKt
+        wscFAIK5IXOCNuhManf1GBx7MAIKfMQmi2844kkC7Sq5/Fo0K45+18KJPrOmiPd0
+        ZJgPxw08sgA8ZR3M0K7EtjKkPSV9g+UnPFahKnMn5uHOmZkoERg61ntfw+0T9O7R
+        ciG3Ka8ABbqdF5QRDAdMkbXQKW3mkzh6kwv4BwrHNYzzOsnjQMv+Vy4KvB2JD5lI
+        XEUCt89t5UGCmmh2zZ5ScRe0EAOPWASB+Sct
+        -----END CERTIFICATE-----
   postInstall: []
