@@ -471,7 +471,7 @@ volume:
     annotations: {}
   caCertificates:
     # Extra root certificates are disabled by default
-    enabled: false
+    enabled: true
     # Load custom Certificates from the following ConfigMap
     configMapName: cacert
 
