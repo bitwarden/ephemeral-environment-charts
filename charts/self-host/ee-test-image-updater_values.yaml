@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:d568cf4f230e510d4614d8b2b2f04c11c9c842e4898dfec3c28b684efb0a9839
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:451ccf8c268c1a805a52c1a3a580d15dbef949135776d2c8fedca5c085fd392f
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:b31905ceac98618f4a8dd9a4bb725b9be00e9d3135accdbce02aca20d7d4020e
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:2b1dc1815ce9a521fe39cd6b2e44c90d191aa06fbed68910977136cac17e0e5e
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:13c0efb04742907294447469d6b24e338eb05f6ba8154f0ef3555b51d42e2195
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:af7b1e5db01f360df631f0457e608b5bda900e47a4a10f34b2872ade50ec20e1
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:c39fdc28fc13cde95057e7206d38396ed73a6c87727ece2e668743050f62f465
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:bf128ae1ff3148a949f1a2fd7275a8a9ac9baad8df3f309f0add0da3fdfc727d
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:ce4f7b2e2fd8b51833734e6b28200c0f5a83aaf92f71dd7c7ea58247dbe5ecbc
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: ee-test-image-updater@
+      tag: ee-test-image-updater@sha256:0d9032747143b41504a34dc1fd062640c8813691575a714e4f60d361cdd3d78d
