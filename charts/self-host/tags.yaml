@@ -1,15 +1,15 @@
 component:
   admin:
     image:
-      tag: ee-test-image-updater@sha256:d568cf4f230e510d4614d8b2b2f04c11c9c842e4898dfec3c28b684efb0a9839
+      tag: latest@sha256:d568cf4f230e510d4614d8b2b2f04c11c9c842e4898dfec3c28b684efb0a9839
       name: bitwardenprod.azurecr.io/admin
   api:
     image:
-      tag: ee-test-image-updater@sha256:451ccf8c268c1a805a52c1a3a580d15dbef949135776d2c8fedca5c085fd392f
+      tag: latest@sha256:451ccf8c268c1a805a52c1a3a580d15dbef949135776d2c8fedca5c085fd392f
       name: bitwardenprod.azurecr.io/api
   attachments:
     image:
-      tag: ee-test-image-updater@sha256:b31905ceac98618f4a8dd9a4bb725b9be00e9d3135accdbce02aca20d7d4020e
+      tag: latest@sha256:b31905ceac98618f4a8dd9a4bb725b9be00e9d3135accdbce02aca20d7d4020e
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
@@ -21,11 +21,11 @@ component:
       name: bitwardenprod.azurecr.io/icons
   identity:
     image:
-      tag: ee-test-image-updater@sha256:af7b1e5db01f360df631f0457e608b5bda900e47a4a10f34b2872ade50ec20e1
+      tag: latest@sha256:af7b1e5db01f360df631f0457e608b5bda900e47a4a10f34b2872ade50ec20e1
       name: bitwardenprod.azurecr.io/identity
   notifications:
     image:
-      tag: ee-test-image-updater@sha256:c39fdc28fc13cde95057e7206d38396ed73a6c87727ece2e668743050f62f465
+      tag: latest@sha256:c39fdc28fc13cde95057e7206d38396ed73a6c87727ece2e668743050f62f465
       name: bitwardenprod.azurecr.io/notifications
   sso:
     image:
