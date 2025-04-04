@@ -11,6 +11,30 @@ component:
     image:
       tag: ee-test-image-updater@sha256:5ec4d703f6b001b08c2128214311e44745efa7ae9bde0966c7a9877ece5eff1c
       name: bitwardenprod.azurecr.io/attachments
+  events:
+    image:
+      tag: ee-test-image-updater@sha256:b66224cd356fe25e48c8e1669f7a36693138f4f00ab0e38593595efe1d24e325
+      name: bitwardenprod.azurecr.io/events
+  icons:
+    image:
+      tag: ee-test-image-updater@sha256:18eae5ff0b77fb994a23afff87731c0ec1cc6316c4e2b56f4b3f34c6da0ef522
+      name: bitwardenprod.azurecr.io/icons
+  identity:
+    image:
+      tag: ee-test-image-updater@sha256:e953f6f576e0425564087682b71e85b3a603e5ef44f7384a7ef736ec21dedb52
+      name: bitwardenprod.azurecr.io/identity
+  notifications:
+    image:
+      tag: ee-test-image-updater@sha256:bd84066a601cbcb0d053d9388325a6f444d30379cfc6af553d2506ce5bbcb942
+      name: bitwardenprod.azurecr.io/notifications
+  sso:
+    image:
+      tag: ee-test-image-updater@sha256:15ff3676eac6ddc977931e5301ead170600587c6cb9a3b4d0d21f458d47434ba
+      name: bitwardenprod.azurecr.io/sso
+  scim:
+    image:
+      tag: ee-test-image-updater@sha256:6805bf2a7ebdb4874acce6365b313d8c9525c430223fa132ce2472680fe66cf1
+      name: bitwardenprod.azurecr.io/scim
 supportComponents:
   dbMigrator:
     image:
