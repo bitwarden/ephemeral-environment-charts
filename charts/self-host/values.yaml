@@ -488,7 +488,7 @@ database:
   # Additional annotations
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/hook-delete-policy: HookFailed
   # Labels to add to the MSSQL deployment
   labels: {}
@@ -519,7 +519,7 @@ database:
       labels: {}
       annotations:
         argocd.argoproj.io/hook: PreSync
-        argocd.argoproj.io/sync-wave: "0"
+        argocd.argoproj.io/sync-wave: "1"
         argocd.argoproj.io/hook-delete-policy: HookFailed
     data:
       # Use an existing PVC by specifying the name.
@@ -532,7 +532,7 @@ database:
       labels: {}
       annotations:
         argocd.argoproj.io/hook: PreSync
-        argocd.argoproj.io/sync-wave: "0"
+        argocd.argoproj.io/sync-wave: "1"
         argocd.argoproj.io/hook-delete-policy: HookFailed
     log:
       # Use an existing PVC by specifying the name.
@@ -545,7 +545,7 @@ database:
       labels: {}
       annotations:
         argocd.argoproj.io/hook: PreSync
-        argocd.argoproj.io/sync-wave: "0"
+        argocd.argoproj.io/sync-wave: "1"
         argocd.argoproj.io/hook-delete-policy: HookFailed
   # Specifies the strategy used to replace old Pods by new ones. The value can be "OnDelete" or "RollingUpdate". "OnDelete" is the default value.
   # When set to OnDelete, the SQL pod will not be recreated automatically on update.  It must be manually deleted to update.

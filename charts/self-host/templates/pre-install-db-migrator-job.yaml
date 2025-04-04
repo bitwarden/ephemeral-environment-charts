@@ -13,7 +13,7 @@ metadata:
     "helm.sh/hook": pre-upgrade
     {{- if .Values.argoCDSupport }}
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
     argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
     {{ end }}
     {{- else }}
