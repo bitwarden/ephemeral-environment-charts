@@ -398,6 +398,7 @@ component:
     # Image name, tag, and pull policy
     image:
       name: bitwardenprod.azurecr.io/web
+      tag: "2025.3.1"
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
