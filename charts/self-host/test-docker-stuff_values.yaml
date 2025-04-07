@@ -2,41 +2,41 @@ component:
   admin:
     image:
       name: bitwardenprod.azurecr.io/admin
-      tag: test-docker-stuff@sha256:aa93ba5354c5a9a4f5f289358a2b47956227335a8701fa372ce1293be5328f5c
+      tag: test-docker-stuff@sha256:8c170645e83853ca6589d1c3093d2028d2b75e3dfaee009184f8415f11ccf825
   api:
     image:
       name: bitwardenprod.azurecr.io/api
-      tag: test-docker-stuff@sha256:972ac49150891ed19117935679e47616bb8cc9c01ae0eac2779897b1a4014136
+      tag: test-docker-stuff@sha256:391e9ef87fcc1c83909b159ed591beac51cb66be81762af8c5efc13ddb5f618c
   attachments:
     image:
       name: bitwardenprod.azurecr.io/attachments
-      tag: test-docker-stuff@sha256:6b6fd78ac8a13024f0627ca4494052401bb788bf3a2fdec31debfaad21314a69
+      tag: test-docker-stuff@sha256:2afc834c1df065525d4b2504e13209a7ce8089a9c972cf4d33425caa1334ff0f
   events:
     image:
       name: bitwardenprod.azurecr.io/events
-      tag: test-docker-stuff@sha256:fd126ec40c33983ad9cc47ac87bf8412f05974eadb4413009db5e963f48ac97f
+      tag: test-docker-stuff@sha256:8f9791196bffe80f301fb5d3ef65b2dc4eb57ab693f64820f1808b5ec828be33
   icons:
     image:
       name: bitwardenprod.azurecr.io/icons
-      tag: test-docker-stuff@sha256:865419c0601c57284b40900e500559be4853f93df279630385d4f77d61f0fcbd
+      tag: test-docker-stuff@sha256:547e5057730cdfca1139e3c12edfebd4e6444d76aa26200d36c4fc115170c93d
   identity:
     image:
       name: bitwardenprod.azurecr.io/identity
-      tag: test-docker-stuff@sha256:3d4675c39a6946aa9e954fe72a47fa4fc113e785e942e495c731938d31d724f7
+      tag: test-docker-stuff@sha256:9e5715b7bd1cf3607a52fa04e041987c3e1bfbc55f31f08598efa7e84151e404
   notifications:
     image:
       name: bitwardenprod.azurecr.io/notifications
-      tag: test-docker-stuff@sha256:57f5c916008698e90dc411fcbb8d1b3a00135ca1130f25e74e790c1bb6bbb4dd
+      tag: test-docker-stuff@sha256:daefe3e3aabcf7b19c52f9fa7bc7b831c4141e5dcb01d53aec6979b0bcc94bf2
   scim:
     image:
       name: bitwardenprod.azurecr.io/scim
-      tag: test-docker-stuff@sha256:771e004c8ae7918346e55e9f2b38b9c9788ec3640bee4dd2c25a2015708c6bd9
+      tag: test-docker-stuff@sha256:bf33a25165bee6dbbc2b51456862a6fdb4843b7109c55ad3be116f4107d01308
   sso:
     image:
       name: bitwardenprod.azurecr.io/sso
-      tag: test-docker-stuff@sha256:86669cccaf5d32e148b2e94d11eee8c4653e73395ddd1e8a6129172ccb4b3103
+      tag: test-docker-stuff@sha256:e5896da858c1073c419a91f344c41daaa92eab7e1e9d85d767ecd11132634b9b
 supportComponents:
   dbMigrator:
     image:
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
-      tag: test-docker-stuff@sha256:a5af3f0755db445f35b0fe4fb678fc4fce6b1e03ad062b35f9606f13b18adf01
+      tag: test-docker-stuff@sha256:c92d75d09f1678e85f8bb19561ff5adf9289ed31bf2c7257f7e7567de05d56a1
