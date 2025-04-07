@@ -43,7 +43,7 @@ jobs:
         run: sudo apt install lynx
 
       - name: Set up Python
-        uses: actions/setup-python@8d9ed9ac5c53483de85588cdf95a591a75ab9f55 # v5.5.0
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
         with:
           python-version: '3.13'
           check-latest: true
@@ -143,12 +143,12 @@ jobs:
           home=$(curl -Ls https://bitwarden.localhost -w httpcode=%{http_code} --cacert rootCA.pem)
           echo $home | lynx -stdin -dump -width=100
           httpCode=$(echo "${home}" | grep -Po 'httpcode=\K(\d\d\d)')
-          bodyCheck=$(echo "${home}" | grep -Po 'Bitwarden Web Vault')
+          bodyCheck=$(echo "${home}" | grep -Pio 'Bitwarden Web Vault')
           if [[ ${httpCode} -ne 200 ]]; then
             echo "::error::ERROR: Home page failed to load.  HTTP code was $httpCode"
             exit 1
           fi
-          if [[ "$bodyCheck" != "Bitwarden Web Vault" ]]; then
+          if [[ "${bodyCheck,,}" != "bitwarden web vault" ]]; then
             echo "::error::ERROR: Home page failed to load.  Please check body output above."
             exit 1
           fi
