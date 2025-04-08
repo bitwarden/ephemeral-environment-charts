@@ -15,18 +15,11 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       # Clone the relevant repositories
-      - name: Checkout server repository
+      - name: Checkout server repo
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           path: server
           repository: bitwarden/server
-          fetch-depth: 0
-
-      - name: Clone billing relay repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          path: billing-relay
-          repository: bitwarden/billing-relay
           fetch-depth: 0
 
       # Run the shell script to compare branches and delete unused ones

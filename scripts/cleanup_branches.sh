@@ -15,7 +15,8 @@ get_branches() {
 # Function to fetch and sanitize current repository branches
 get_current_branches() {
   git fetch --all
-  git branch -r | sed 's/origin\///' | grep -v '\->' | sort
+  # Get all remote branches that start with 'ee-' and trim off the origin and ee- prefix
+  git branch -r --list 'origin/ee-*' --format='%(refname:short)' | sed -E 's/^origin\/ee-//' | sort
 }
 
 # Function to delete a branch
@@ -27,8 +28,7 @@ delete_branch() {
 
 # Define an array of repositories to check
 REPOSITORIES=(
-  "serverRepo"
-  "billingRelayRepo"
+  "server"
   # Add more repositories here as needed
 )
 
