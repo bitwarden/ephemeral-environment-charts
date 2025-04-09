@@ -1,0 +1,5 @@
+component:
+  admin:
+    image:
+      tag: test-image-updater-ee@sha256:e8b75c7b04021a8dcc944a982fb2de9e42810ff854cb947295d4f57b17dbe13c
+      name: bitwardenprod.azurecr.io/admin
