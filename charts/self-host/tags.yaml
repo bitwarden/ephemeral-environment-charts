@@ -38,5 +38,5 @@ component:
 supportComponents:
   dbMigrator:
     image:
-      tag: test-image-updater-ee@sha256:60c310220a671f3f97025fcbd921c3f9eeeb6dc9ec253f922c24606b7ea65fcf
+      tag: latest@sha256:60c310220a671f3f97025fcbd921c3f9eeeb6dc9ec253f922c24606b7ea65fcf
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
