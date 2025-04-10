@@ -1,0 +1,4 @@
+general: 
+  admins: "ee-admin@bitwarden.com, ee-user@bitwarden.com"
+  webVersionOverride: "2025.1.0"
+
