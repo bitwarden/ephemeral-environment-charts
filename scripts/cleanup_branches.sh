@@ -45,6 +45,6 @@ CURRENT_BRANCHES=$(get_current_branches)
 # Find branches to delete
 for branch in $CURRENT_BRANCHES; do
   if ! echo "$ALL_EXTERNAL_BRANCHES" | grep -q "^$branch$"; then
-    delete_branch "$branch"
+    delete_branch "ee-$branch"
   fi
 done
