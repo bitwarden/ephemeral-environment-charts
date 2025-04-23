@@ -301,7 +301,7 @@ component:
     image:
       name: bitwardenprod.azurecr.io/key-connector
     # Key Connector version
-      tag: "2024.8.0"
+      tag: "dev"
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
