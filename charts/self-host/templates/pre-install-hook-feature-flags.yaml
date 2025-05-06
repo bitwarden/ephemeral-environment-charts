@@ -10,7 +10,7 @@ metadata:
     "helm.sh/hook-weight": "0"
     {{- if .Values.argoCDSupport }}
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
     {{ end }}
 data:
