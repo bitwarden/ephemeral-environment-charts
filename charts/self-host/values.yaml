@@ -6,9 +6,7 @@ nameOverride: ""
 # Flags can be added as key-value pairs, e.g., flagName: true. See the documentation for more information.
 # See https://contributing.bitwarden.com/contributing/feature-flags/#flag-data-sources for more information.
 featureFlags:
-   secrets-manager: true
-   sm-ga-billing: true
-   display-eu-environment: false
+   item-share: true
 
 # Enable Argo CD support
 # Adds annotations for sync waves and hooks on various jobs to ensure proper ordering of resources.
