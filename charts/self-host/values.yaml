@@ -183,7 +183,8 @@ component:
     podServiceAccount:
   api:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
