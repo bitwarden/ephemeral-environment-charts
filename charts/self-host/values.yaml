@@ -160,7 +160,8 @@ component:
   # The Admin component
   admin:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
@@ -182,7 +183,8 @@ component:
     podServiceAccount:
   api:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
@@ -204,7 +206,8 @@ component:
     podServiceAccount:
   attachments:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
@@ -226,7 +229,8 @@ component:
     podServiceAccount:
   events:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
@@ -248,7 +252,8 @@ component:
     podServiceAccount:
   icons:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
@@ -270,7 +275,8 @@ component:
     podServiceAccount:
   identity:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
@@ -324,7 +330,8 @@ component:
 
   notifications:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
@@ -346,7 +353,8 @@ component:
     podServiceAccount:
   scim:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # SCIM is disabled by default.  To use this service, enable it below and set an appropriate Ingress path
     enabled: false
     # Additional deployment labels
@@ -370,7 +378,8 @@ component:
     podServiceAccount:
   sso:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
@@ -392,7 +401,8 @@ component:
     podServiceAccount:
   web:
     # Additional deployment annotations
-    annotations: {}
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Image name, tag, and pull policy
