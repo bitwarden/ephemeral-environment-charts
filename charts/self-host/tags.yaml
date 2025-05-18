@@ -1,27 +1,27 @@
 component:
   admin:
     image:
-      tag: do-not-merge-ee-env-test@sha256:ce9bc2f44855e1912b464c25389940dffc79637b5a9109f296387e9325b87839
+      tag: latest@sha256:ce9bc2f44855e1912b464c25389940dffc79637b5a9109f296387e9325b87839
       name: bitwardenprod.azurecr.io/admin
   api:
     image:
-      tag: do-not-merge-ee-env-test@sha256:252867b50b84d9379fa6ea784cda1fdd26114811a1ab21fa17f38f8ab4089329
+      tag: latest@sha256:252867b50b84d9379fa6ea784cda1fdd26114811a1ab21fa17f38f8ab4089329
       name: bitwardenprod.azurecr.io/api
   attachments:
     image:
-      tag: do-not-merge-ee-env-test@sha256:64bed9f1e74588b3afcdb93853035c70424bee289849665a42d28540a07d6ac6
+      tag: latest@sha256:64bed9f1e74588b3afcdb93853035c70424bee289849665a42d28540a07d6ac6
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
-      tag: do-not-merge-ee-env-test@sha256:62d593ed4b8500b98abdcae7a5cb892d920b1e706fd628dc23ce1b5809a6e756
+      tag: latest@sha256:62d593ed4b8500b98abdcae7a5cb892d920b1e706fd628dc23ce1b5809a6e756
       name: bitwardenprod.azurecr.io/events
   icons:
     image:
-      tag: do-not-merge-ee-env-test@sha256:71fc8f533038d1781fcd84301b20d0f7171c2e92ddb0b380fb63551c000ce767
+      tag: latest@sha256:71fc8f533038d1781fcd84301b20d0f7171c2e92ddb0b380fb63551c000ce767
       name: bitwardenprod.azurecr.io/icons
   notifications:
     image:
-      tag: do-not-merge-ee-env-test@sha256:3908754daa1abffc22890f4f8665283961346edb1b24957617ae8ccd23d35f35
+      tag: latest@sha256:3908754daa1abffc22890f4f8665283961346edb1b24957617ae8ccd23d35f35
       name: bitwardenprod.azurecr.io/notifications
   scim:
     image:
@@ -29,11 +29,11 @@ component:
       name: bitwardenprod.azurecr.io/scim
   sso:
     image:
-      tag: do-not-merge-ee-env-test@sha256:80f76a2715ae9ae8db42ae080afb05efa0ce51d8cd04a79f8edfd550f7c1a378
+      tag: latest@sha256:80f76a2715ae9ae8db42ae080afb05efa0ce51d8cd04a79f8edfd550f7c1a378
       name: bitwardenprod.azurecr.io/sso
   identity:
     image:
-      tag: do-not-merge-ee-env-test@sha256:004dd2e206decee2c53f4f92dc33c7dfb69424b1773389a2035fe7dca490911b
+      tag: latest@sha256:004dd2e206decee2c53f4f92dc33c7dfb69424b1773389a2035fe7dca490911b
       name: bitwardenprod.azurecr.io/identity
 supportComponents:
   dbMigrator:
