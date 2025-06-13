@@ -207,6 +207,7 @@ jobs:
         run: git push -u origin $PR_BRANCH
 
       - name: Create versions PR
+        id: create-pr
         if: ${{ steps.version-changed.outputs.changes_to_commit == 'TRUE' }}
         env:
           GH_TOKEN: ${{ steps.retrieve-secrets.outputs.github-pat-bitwarden-devops-bot-repo-scope }}
