@@ -10,6 +10,8 @@ jobs:
   setup:
     name: Setup
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     outputs:
       core_version: ${{ steps.get-core.outputs.version }}
       core_version_update: ${{ steps.core-update.outputs.update }}
