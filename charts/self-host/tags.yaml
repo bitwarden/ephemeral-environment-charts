@@ -1,0 +1,42 @@
+component:
+  admin:
+    image:
+      tag: latest@sha256:2cf278fe853b895debefdeba71963a4d527e016894d76b4cb2163f5a41ccb6a8
+      name: bitwardenprod.azurecr.io/admin
+  api:
+    image:
+      tag: latest@sha256:93e29158b7cbb887374e56ceff5c7d77fb8c8326947247908d96d9abc4a1f21e
+      name: bitwardenprod.azurecr.io/api
+  attachments:
+    image:
+      tag: latest@sha256:6c165bf0bb3c82d2d9bb2a9bc5c9d416fa342b31892cf4b30a954a90543a6c55
+      name: bitwardenprod.azurecr.io/attachments
+  events:
+    image:
+      tag: latest@sha256:ad79de5bec0065f92132f10f5f3dd5b49e1290a0e13c04132b6b543a1f314ca4
+      name: bitwardenprod.azurecr.io/events
+  icons:
+    image:
+      tag: latest@sha256:60b6d4b3e5095ed68830b98c3042cc7ebca49c613e7215061753b5ff620efb5d
+      name: bitwardenprod.azurecr.io/icons
+  identity:
+    image:
+      tag: latest@sha256:5e879e4f2d971fe794bffcabbdb98f9f6f04349045e33d09da5e753c44067a00
+      name: bitwardenprod.azurecr.io/identity
+  notifications:
+    image:
+      tag: latest@sha256:827359f9ebecfc8fa3ac6692f9f939cd5ceacd1e6e36e39f29bed4b8b35a64fe
+      name: bitwardenprod.azurecr.io/notifications
+  sso:
+    image:
+      tag: latest@sha256:bd18acf15b211fefaa9bc473a23580db7409fb4b61187c91de8604e634f360d3
+      name: bitwardenprod.azurecr.io/sso
+  scim:
+    image:
+      tag: k8-alpine-test-bre-917@sha256:f2a25dada105914b40f478b35ab115e37430da2bd61dceff3876092dc0ccfe30
+      name: bitwardenprod.azurecr.io/scim
+supportComponents:
+  dbMigrator:
+    image:
+      tag: k8-alpine-test-bre-917@sha256:1ac9f25cb1a66bc01b8e171d055ff82808e4f183f80b7d5d5bbbdbb78d7a66c7
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
