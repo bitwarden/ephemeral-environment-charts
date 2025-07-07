@@ -13,7 +13,7 @@ component:
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
-      tag: latest@sha256:ad79de5bec0065f92132f10f5f3dd5b49e1290a0e13c04132b6b543a1f314ca4
+      tag: k8-alpine-test-bre-917@sha256:eb4b548ee7a338ec3e9e393fd7b2d3e0972a0e98c3c8bdb416e3881f997f06f4
       name: bitwardenprod.azurecr.io/events
   icons:
     image:
@@ -25,7 +25,7 @@ component:
       name: bitwardenprod.azurecr.io/identity
   notifications:
     image:
-      tag: latest@sha256:827359f9ebecfc8fa3ac6692f9f939cd5ceacd1e6e36e39f29bed4b8b35a64fe
+      tag: k8-alpine-test-bre-917@sha256:18fb6ede18c55218a1a48414139cb4cffd193e2cd404fc7ac0968221382f4c1e
       name: bitwardenprod.azurecr.io/notifications
   sso:
     image:
@@ -38,5 +38,5 @@ component:
 supportComponents:
   dbMigrator:
     image:
-      tag: k8-alpine-test-bre-917@sha256:1ac9f25cb1a66bc01b8e171d055ff82808e4f183f80b7d5d5bbbdbb78d7a66c7
+      tag: k8-alpine-test-bre-917@sha256:60c5043c728bc944974db7bcf3f37d1f1c7b80ff41f0bca4f06e47f2c91ed1dc
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
