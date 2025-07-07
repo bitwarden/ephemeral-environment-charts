@@ -9,7 +9,7 @@ component:
       name: bitwardenprod.azurecr.io/api
   attachments:
     image:
-      tag: latest@sha256:6c165bf0bb3c82d2d9bb2a9bc5c9d416fa342b31892cf4b30a954a90543a6c55
+      tag: k8-alpine-test-bre-917@sha256:61da1a6ff50a4b6724403cb88e81cc6c4437bbefab799e5e818562bbeef897e4
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
