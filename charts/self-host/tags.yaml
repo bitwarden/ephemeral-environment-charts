@@ -5,31 +5,31 @@ component:
       name: bitwardenprod.azurecr.io/admin
   api:
     image:
-      tag: k8-alpine-test-bre-917@sha256:9c311e42de3b719ecab1a23053a83dffbf4fc3f8e28f88b04241c9fcb4862ff2
+      tag: latest@sha256:9c311e42de3b719ecab1a23053a83dffbf4fc3f8e28f88b04241c9fcb4862ff2
       name: bitwardenprod.azurecr.io/api
   attachments:
     image:
-      tag: k8-alpine-test-bre-917@sha256:61da1a6ff50a4b6724403cb88e81cc6c4437bbefab799e5e818562bbeef897e4
+      tag: latest@sha256:61da1a6ff50a4b6724403cb88e81cc6c4437bbefab799e5e818562bbeef897e4
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
-      tag: k8-alpine-test-bre-917@sha256:eb4b548ee7a338ec3e9e393fd7b2d3e0972a0e98c3c8bdb416e3881f997f06f4
+      tag: latest@sha256:eb4b548ee7a338ec3e9e393fd7b2d3e0972a0e98c3c8bdb416e3881f997f06f4
       name: bitwardenprod.azurecr.io/events
   icons:
     image:
-      tag: k8-alpine-test-bre-917@sha256:6307b30a5f52f065969d9ad3e0663958d27cf6d1e78184a6f9fbcb3f5e45ea20
+      tag: latest@sha256:6307b30a5f52f065969d9ad3e0663958d27cf6d1e78184a6f9fbcb3f5e45ea20
       name: bitwardenprod.azurecr.io/icons
   identity:
     image:
-      tag: k8-alpine-test-bre-917@sha256:6994b757abf358b28d3c0f671e97bbb57a0059421aba081c281e9b84e61672f4
+      tag: latest@sha256:6994b757abf358b28d3c0f671e97bbb57a0059421aba081c281e9b84e61672f4
       name: bitwardenprod.azurecr.io/identity
   notifications:
     image:
-      tag: k8-alpine-test-bre-917@sha256:18fb6ede18c55218a1a48414139cb4cffd193e2cd404fc7ac0968221382f4c1e
+      tag: latest@sha256:18fb6ede18c55218a1a48414139cb4cffd193e2cd404fc7ac0968221382f4c1e
       name: bitwardenprod.azurecr.io/notifications
   sso:
     image:
-      tag: k8-alpine-test-bre-917@sha256:e74dca15247973d509642a73f45e664611f7f05daaf554d000cebc604620edc8
+      tag: latest@sha256:e74dca15247973d509642a73f45e664611f7f05daaf554d000cebc604620edc8
       name: bitwardenprod.azurecr.io/sso
   scim:
     image:
@@ -38,5 +38,5 @@ component:
 supportComponents:
   dbMigrator:
     image:
-      tag: latest@sha256:60c5043c728bc944974db7bcf3f37d1f1c7b80ff41f0bca4f06e47f2c91ed1dc
+      tag: k8-alpine-test-bre-917@sha256:60c5043c728bc944974db7bcf3f37d1f1c7b80ff41f0bca4f06e47f2c91ed1dc
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
