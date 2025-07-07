@@ -1,7 +1,7 @@
 component:
   admin:
     image:
-      tag: latest@sha256:2cf278fe853b895debefdeba71963a4d527e016894d76b4cb2163f5a41ccb6a8
+      tag: k8-alpine-test-bre-917@sha256:2b4c8baee324ce576055e0db630b798545bd45f54e1e92285878ee898bf2cc8d
       name: bitwardenprod.azurecr.io/admin
   api:
     image:
