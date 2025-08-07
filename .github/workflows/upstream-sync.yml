@@ -1,0 +1,11 @@
+name: Upstream Sync
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Test
+        run: exit 0
