@@ -1,11 +1,59 @@
 name: Upstream Sync
+
 on:
-  workflow_dispatch:
+  schedule:
+    # Daily at 08:00 UTC
+    - cron: '0 8 * * *'
 
 jobs:
-  test:
-    name: Test
+  sync:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      _UPSTREAM_REPO: bitwarden/helm-charts
+      _UPSTREAM_BRANCH: main
+      _TARGET_BRANCH: main
     steps:
-      - name: Test
-        run: exit 0
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote and fetch
+        run: |
+          git remote add upstream "https://github.com/${UPSTREAM_REPO}.git" || true
+          git fetch upstream "${UPSTREAM_BRANCH}"
+
+      - name: Create branch from upstream
+        id: make_branch
+        run: |
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          SYNC_BRANCH="upstream-sync-${TIMESTAMP}"
+          echo "SYNC_BRANCH=${SYNC_BRANCH}" >> $GITHUB_OUTPUT
+
+          # Create local branch from upstream branch
+          git checkout -B "${SYNC_BRANCH}" "upstream/${UPSTREAM_BRANCH}"
+
+      - name: Push sync branch
+        run: git push -u origin ${{ steps.make_branch.outputs.SYNC_BRANCH }}
+
+      - name: Create PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SYNC_BRANCH: ${{ steps.make_branch.outputs.SYNC_BRANCH }}
+        run: |
+          gh pr create \
+            --base "${TARGET_BRANCH}" \
+            --head "${SYNC_BRANCH}" \
+            --title "chore: sync from upstream" \
+            --label "upstream-sync" \
+            --label "needs-review" \
+            --body "This PR syncs changes from \
+            ${UPSTREAM_REPO}@${UPSTREAM_BRANCH} into ${TARGET_BRANCH}."
