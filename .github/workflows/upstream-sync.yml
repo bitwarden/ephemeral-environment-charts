@@ -11,80 +11,44 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
-      pull-requests: write
-      issues: write
-      id-token: write
+    #   pull-requests: write
+    #   issues: write
+    #   id-token: write
     env:
       _UPSTREAM_REPO: bitwarden/helm-charts
       _UPSTREAM_BRANCH: main
       _TARGET_BRANCH: main
     steps:
-      - name: Log in to Azure
-        uses: bitwarden/gh-actions/azure-login@main
-        with:
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
+    #   - name: Log in to Azure
+    #     uses: bitwarden/gh-actions/azure-login@main
+    #     with:
+    #       subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    #       tenant_id: ${{ secrets.AZURE_TENANT_ID }}
+    #       client_id: ${{ secrets.AZURE_CLIENT_ID }}
 
-      - name: Retrieve secrets
-        id: retrieve-secrets
-        uses: bitwarden/gh-actions/get-keyvault-secrets@main
-        with:
-          keyvault: "bitwarden-ci"
-          secrets: "github-pat-bitwarden-devops-bot-repo-scope"
+    #   - name: Retrieve secrets
+    #     id: retrieve-secrets
+    #     uses: bitwarden/gh-actions/get-keyvault-secrets@main
+    #     with:
+    #       keyvault: "bitwarden-ci"
+    #       secrets: "github-pat-bitwarden-devops-bot-repo-scope"
 
-      - name: Log out from Azure
-        uses: bitwarden/gh-actions/azure-logout@main
+    #   - name: Log out from Azure
+    #     uses: bitwarden/gh-actions/azure-logout@main
 
-      - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          fetch-depth: 0
-          token: ${{ steps.retrieve-secrets.outputs.github-pat-bitwarden-devops-bot-repo-scope }}
+    #   - name: Checkout repository
+    #     uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    #     with:
+    #       fetch-depth: 0
+    #       token: ${{ steps.retrieve-secrets.outputs.github-pat-bitwarden-devops-bot-repo-scope }}
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    #   - name: Configure Git
+    #     run: |
+    #       git config --global user.name "github-actions[bot]"
+    #       git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Add upstream remote and fetch
-        run: |
-          git remote add upstream "https://github.com/${_UPSTREAM_REPO}.git" || true
-          git fetch upstream "${_UPSTREAM_BRANCH}"
-
-      - name: Create sync branch from target
-        id: make_branch
-        run: |
-          git fetch origin "${_TARGET_BRANCH}"
-          SYNC_BRANCH="upstream-sync"
-          git checkout -b "${SYNC_BRANCH}" "origin/${_TARGET_BRANCH}"
-          echo "SYNC_BRANCH=${SYNC_BRANCH}" >> $GITHUB_OUTPUT
-
-      - name: Merge upstream changes
-        run: |
-          # Merge upstream changes into our sync branch
-          git merge "upstream/${_UPSTREAM_BRANCH}" -X theirs --no-edit
-
-      - name: Restore local workflow files
-        run: |
-          # Ensure we keep our local workflow files
-          git fetch origin "${_TARGET_BRANCH}"
-          git restore --source="origin/${_TARGET_BRANCH}" .github/workflows || true
-          if ! git diff --quiet -- .github/workflows; then
-            git add .github/workflows
-            git commit -m "chore: preserve local workflow files from ${_TARGET_BRANCH}"
-          fi
-
-      - name: Push sync branch
-        run: git push -f origin ${{ steps.make_branch.outputs.SYNC_BRANCH }}
-
-      - name: Create PR
-        env:
-          GH_TOKEN: ${{ steps.retrieve-secrets.outputs.github-pat-bitwarden-devops-bot-repo-scope }}
-          SYNC_BRANCH: ${{ steps.make_branch.outputs.SYNC_BRANCH }}
-        run: |
-          gh pr create \
-            --base "${_TARGET_BRANCH}" \
-            --head "${SYNC_BRANCH}" \
-            --title "chore: sync from upstream" \
-            --body "This PR syncs changes from ${_UPSTREAM_REPO}@${_UPSTREAM_BRANCH} into ${_TARGET_BRANCH}."
+    - uses: tgymnich/fork-sync@v1.8
+      with:
+        owner: bitwarden
+        base: main
+        head: main
