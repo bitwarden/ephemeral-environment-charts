@@ -14,6 +14,7 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
+      id-token: write
     env:
       _UPSTREAM_REPO: bitwarden/helm-charts
       _UPSTREAM_BRANCH: main
