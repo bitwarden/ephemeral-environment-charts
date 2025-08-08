@@ -65,6 +65,16 @@ jobs:
           # Merge upstream changes into our sync branch
           git merge "upstream/${_UPSTREAM_BRANCH}" -X theirs --no-edit
 
+      - name: Restore local workflow files
+        run: |
+          # Ensure we keep our local workflow files
+          git fetch origin "${_TARGET_BRANCH}"
+          git restore --source="origin/${_TARGET_BRANCH}" .github/workflows || true
+          if ! git diff --quiet -- .github/workflows; then
+            git add .github/workflows
+            git commit -m "chore: preserve local workflow files from ${_TARGET_BRANCH}"
+          fi
+
       - name: Push sync branch
         run: git push -u origin ${{ steps.make_branch.outputs.SYNC_BRANCH }}
 
