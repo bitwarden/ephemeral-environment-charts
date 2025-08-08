@@ -60,7 +60,7 @@ jobs:
 
       - name: Create PR
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SYNC_BRANCH: ${{ steps.make_branch.outputs.SYNC_BRANCH }}
         run: |
           gh pr create \
