@@ -83,8 +83,13 @@ jobs:
           GH_TOKEN: ${{ steps.retrieve-secrets.outputs.github-pat-bitwarden-devops-bot-repo-scope }}
           SYNC_BRANCH: ${{ steps.make_branch.outputs.SYNC_BRANCH }}
         run: |
-          gh pr create \
-            --base "${_TARGET_BRANCH}" \
-            --head "${SYNC_BRANCH}" \
-            --title "chore: sync from upstream" \
-            --body "This PR syncs changes from ${_UPSTREAM_REPO}@${_UPSTREAM_BRANCH} into ${_TARGET_BRANCH}."
+          # Check if there are commits between the local branches
+          if git log "${_TARGET_BRANCH}..${SYNC_BRANCH}" --oneline | grep -q .; then
+            gh pr create \
+              --base "${_TARGET_BRANCH}" \
+              --head "${SYNC_BRANCH}" \
+              --title "chore: sync from upstream" \
+              --body "This PR syncs changes from ${_UPSTREAM_REPO}@${_UPSTREAM_BRANCH} into ${_TARGET_BRANCH}."
+          else
+            echo "No commits between ${_TARGET_BRANCH} and ${SYNC_BRANCH}. Skipping PR creation."
+          fi
