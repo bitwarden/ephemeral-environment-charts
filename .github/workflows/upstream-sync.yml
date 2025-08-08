@@ -67,6 +67,5 @@ jobs:
             --head "${SYNC_BRANCH}" \
             --title "chore: sync from upstream" \
             --label "upstream-sync" \
-            --label "needs-review" \
             --body "This PR syncs changes from \
             ${_UPSTREAM_REPO}@${_UPSTREAM_BRANCH} into ${_TARGET_BRANCH}."
