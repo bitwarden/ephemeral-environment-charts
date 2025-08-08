@@ -56,7 +56,7 @@ jobs:
         id: make_branch
         run: |
           git fetch origin "${_TARGET_BRANCH}"
-          SYNC_BRANCH="upstream-sync-$(date +%Y%m%d-%H%M%S)"
+          SYNC_BRANCH="upstream-sync"
           git checkout -b "${SYNC_BRANCH}" "origin/${_TARGET_BRANCH}"
           echo "SYNC_BRANCH=${SYNC_BRANCH}" >> $GITHUB_OUTPUT
 
