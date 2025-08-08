@@ -13,6 +13,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      issues: write
     env:
       _UPSTREAM_REPO: bitwarden/helm-charts
       _UPSTREAM_BRANCH: main
