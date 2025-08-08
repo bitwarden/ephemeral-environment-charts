@@ -64,20 +64,12 @@ jobs:
         with:
           version: v3.13.1
 
-      - name: Download Helm chart artifact - Self Host
+      - name: Download Helm chart artifact
         uses: bitwarden/gh-actions/download-artifacts@main
         with:
           branch: main
           path: .cr-release-packages
-          workflow: build-self-host.yml
-          workflow_conclusion: success
-
-      - name: Download Helm chart artifact - SM Operator
-        uses: bitwarden/gh-actions/download-artifacts@main
-        with:
-          branch: main
-          path: .cr-release-packages
-          workflow: build-sm-operator.yml
+          workflow: build.yml
           workflow_conclusion: success
 
       - name: Release Helm chart

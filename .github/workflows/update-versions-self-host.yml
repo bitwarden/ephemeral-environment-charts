@@ -17,8 +17,6 @@ jobs:
       core_version_update: ${{ steps.core-update.outputs.update }}
       web_version: ${{ steps.get-web.outputs.version }}
       web_version_update: ${{ steps.web-update.outputs.update }}
-    permissions:
-      contents: read
     steps:
       - name: Checkout Branch
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -90,7 +88,7 @@ jobs:
           test_image() {
               image=$1
               version=$2
-              tag=$(skopeo list-tags docker://ghcr.io/bitwarden/$image | jq '.Tags[]' | grep $version)
+              tag=$(curl -s "https://registry.hub.docker.com/v2/repositories/bitwarden/$image/tags/"|jq '."results"[]["name"]' | grep $version | cat)
               if [[ -z "$tag" ]]; then
                   echo "$image - $version - NOT FOUND!"
                   echo "Stopping..."
@@ -210,7 +208,6 @@ jobs:
       - name: Create versions PR
         id: create-pr
         if: ${{ steps.version-changed.outputs.changes_to_commit == 'TRUE' }}
-        id: create-pr
         env:
           GH_TOKEN: ${{ steps.retrieve-secrets.outputs.github-pat-bitwarden-devops-bot-repo-scope }}
           PR_BRANCH: ${{ steps.create-branch.outputs.name }}
