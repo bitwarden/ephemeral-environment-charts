@@ -63,7 +63,7 @@ jobs:
       - name: Merge upstream changes
         run: |
           # Merge upstream changes into our sync branch
-          git merge "upstream/${_UPSTREAM_BRANCH}" --no-edit
+          git merge "upstream/${_UPSTREAM_BRANCH}" -X theirs --no-edit
 
       - name: Push sync branch
         run: git push -u origin ${{ steps.make_branch.outputs.SYNC_BRANCH }}
