@@ -1,0 +1,30 @@
+{{- if .Values.featureFlags }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-feature-flags
+  labels:
+    app.kubernetes.io/component: pre-install-hook
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "0"
+    {{- if .Values.argoCDSupport }}
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    {{ end }}
+data:
+  # Iterate over the featureFlags map and create a JSON object.
+  # Ensure that the last entry does not have a trailing comma by using a key of $first.
+  flags.json: |
+    {
+      "flagValues": {
+        {{- $first := true }}
+        {{- range $key, $value := .Values.featureFlags }}
+          {{- if not $first }},{{ end }}
+          "{{ $key }}": {{ $value | quote }}
+          {{- $first = false }}
+        {{- end }}
+      }
+    }
+{{- end }}

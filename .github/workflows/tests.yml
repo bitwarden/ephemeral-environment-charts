@@ -58,7 +58,7 @@ jobs:
 
   test:
     name: Test Helm charts
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     environment: Production
     permissions:
       contents: read
@@ -72,6 +72,9 @@ jobs:
 
       - name: Set up Helm
         uses: Azure/setup-helm@5119fcb9089d432beecbf79bb2c7915207344b78 # v3.5
+
+      - name: Log out from Azure
+        uses: bitwarden/gh-actions/azure-logout@main
 
       - name: Set up lynx
         run: sudo apt install lynx

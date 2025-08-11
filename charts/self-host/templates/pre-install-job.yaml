@@ -1,3 +1,4 @@
+{{- if .Values.general.generateIdentityCertificate }}
 {{- $identityCertPasswordTxtValue := ( randAlpha 32 ) }}
 {{- $currentIdentityCert := ( lookup "v1" "Secret" .Release.Namespace "{{ .Release.Name }}-identity-cert" ) }}
 {{- $identityCertPasswordTxtValue := ( lookup "v1" "Secret" .Release.Namespace "{{ .Release.Name }}-identity-cert-password" ) }}
@@ -16,6 +17,11 @@ metadata:
     "helm.sh/hook": pre-install
     "helm.sh/hook-weight": "2"
     "helm.sh/hook-delete-policy": hook-succeeded,hook-failed,before-hook-creation
+    {{- if .Values.argoCDSupport }}
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
+    {{ end }}
 spec:
   template:
     metadata:
@@ -75,3 +81,4 @@ spec:
         - name: temp
           emptyDir:
             medium: Memory
+{{- end }}

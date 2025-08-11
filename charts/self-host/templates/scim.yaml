@@ -1,10 +1,14 @@
 {{- if .Values.component.scim.enabled }}
+# Get tag from image.tag, or coreVersionOverride, or default to coreVersionDefault
+{{- $tag := default ( default ( include "bitwarden.coreVersionDefault" nil ) .Values.general.coreVersionOverride ) .Values.component.scim.image.tag -}}
+
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "bitwarden.scim" . }}
   namespace: {{ .Release.Namespace }}
+  annotations: {{ toYaml .Values.component.scim.annotations | nindent 4 }}
   labels:
     app: {{ template "bitwarden.scim" . }}
     app.kubernetes.io/component: scim
@@ -66,7 +70,7 @@ spec:
     {{- end }}
       containers:
       - name: {{ template "bitwarden.scim" . }}
-        image: "{{ .Values.component.scim.image.name }}:{{ default ( include "bitwarden.coreVersionDefault" nil ) .Values.general.coreVersionOverride }}"
+        image: "{{ .Values.component.scim.image.name }}:{{ $tag }}"
         envFrom:
           - configMapRef:
               name: {{ .Release.Name }}-config-map
@@ -74,6 +78,8 @@ spec:
               name: {{ .Values.secrets.secretName | quote }}
           - secretRef:
               name: {{ template "bitwarden.keyssecret" . }}
+          - secretRef:
+              name: {{ template "bitwarden.sharedCloudResourcesSecret" . }}
           {{- if .Values.database.enabled }}
           - secretRef:
               name: {{ .Release.Name }}-sql-connection-string
@@ -81,6 +87,10 @@ spec:
         env:
           - name: ASPNETCORE_URLS
             value: http://+:5000
+          {{- if .Values.featureFlags }}
+          - name: globalSettings__launchDarkly__flagDataFilePath
+            value: /etc/bitwarden/core/flags.json
+          {{- end }}
         livenessProbe:
           httpGet:
             path: /alive
@@ -110,6 +120,11 @@ spec:
         - name: secrets-store-inline
           mountPath: "/mnt/secrets-store"
           readOnly: true
+        {{- end }}
+        {{- if .Values.featureFlags }}
+        - name: feature-flags-config
+          mountPath: /etc/bitwarden/core/flags.json
+          subPath: flags.json
         {{- end }}
         securityContext:
 {{ toYaml .Values.component.scim.securityContext | indent 10 }}
@@ -141,6 +156,11 @@ spec:
             volumeAttributes:
               secretProviderClass: {{ .Values.secrets.secretProviderClass }}
         {{- end }}
+        {{- if .Values.featureFlags }}
+        - name: feature-flags-config
+          configMap:
+            name: {{ .Release.Name }}-feature-flags
+        {{- end }}
 
 ---
 apiVersion: v1
@@ -148,6 +168,7 @@ kind: Service
 metadata:
   name: {{ template "bitwarden.scim" . }}
   namespace: {{ .Release.Namespace }}
+  annotations: {{ toYaml .Values.component.scim.annotations | nindent 4 }}
   labels:
     app.kubernetes.io/component: scim
 {{ include "bitwarden.labels" . | indent 4 }}

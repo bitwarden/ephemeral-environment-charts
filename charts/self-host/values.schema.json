@@ -8,10 +8,107 @@
         "nameOverride": {
             "type": "string"
         },
+        "featureFlags": {
+            "type": "object",
+            "description": "LaunchDarkly feature flags. Flags can be added as key-value pairs, e.g., flagName: true. See the documentation for more information.",
+            "additionalProperties": {
+                "type": "boolean"
+            }
+        },
+        "argoCDSupport": {
+            "type": "boolean",
+            "description": "Converts sync hooks to Argo CD sync waves to support sync operations."
+        },
+        "github": {
+            "type": "object",
+            "required": [],
+            "properties": {
+                "project": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "prId": {
+                    "type": "string"
+                }
+            }
+        },
+        "extensions": {
+            "type": "object",
+            "required": [],
+            "properties": {
+                "dbClient": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
+                        "image": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "tag": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "service": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "port": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                },
+                "splunk": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
+                        "version": {
+                            "type": "number"
+                        },
+                        "bitwardenSplunkAppArtifact": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {
+                                "artifactURL": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "general": {
             "type": "object",
             "required": [],
             "properties": {
+                "generateIdentityCertificate": {
+                    "type": "boolean",
+                    "description": "Generate identity certificate. Defaults to a shared certificate for encryption (required for dataset sharing). Environment must be recreated when modified."
+                },
                 "domain": {
                     "type": "string"
                 },
@@ -280,6 +377,11 @@
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -304,6 +406,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -490,6 +595,11 @@
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -514,6 +624,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -700,6 +813,11 @@
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -724,6 +842,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -910,6 +1031,11 @@
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -934,6 +1060,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1120,6 +1249,11 @@
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -1144,6 +1278,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1330,6 +1467,11 @@
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -1354,6 +1496,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1536,10 +1681,156 @@
                         }
                     }
                 },
+                "keyConnector": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
+                        "labels": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        },
+                        "image": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "tag": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "resources": {
+                            "type": "object",
+                            "properties": {
+                                "requests": {
+                                    "type": "object",
+                                    "properties": {
+                                        "memory": {
+                                            "type": "string"
+                                        },
+                                        "cpu": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "limits": {
+                                    "type": "object",
+                                    "properties": {
+                                        "memory": {
+                                            "type": "string"
+                                        },
+                                        "cpu": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "deploymentStrategy": {
+                            "type": "string",
+                            "enum": ["RollingUpdate", "Recreate"]
+                        },
+                        "securityContext": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {
+                                "allowPrivilegeEscalation": {
+                                    "type": ["boolean", "null"]
+                                },
+                                "capabilities": {
+                                    "type": "object",
+                                    "properties": {
+                                        "add": {
+                                            "type": ["array", "null"],
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "drop": {
+                                            "type": ["array", "null"],
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "privileged": {
+                                    "type": ["boolean", "null"]
+                                },
+                                "procMount": {
+                                    "type": ["string", "null"]
+                                },
+                                "readOnlyRootFilesystem": {
+                                    "type": ["boolean", "null"]
+                                },
+                                "runAsGroup": {
+                                    "type": ["integer", "null"]
+                                },
+                                "runAsNonRoot": {
+                                    "type": ["boolean", "null"]
+                                },
+                                "runAsUser": {
+                                    "type": ["integer", "null"]
+                                },
+                                "seLinuxOptions": {
+                                    "type": "object",
+                                    "properties": {
+                                        "level": {
+                                            "type": ["string", "null"]
+                                        },
+                                        "role": {
+                                            "type": ["string", "null"]
+                                        },
+                                        "type": {
+                                            "type": ["string", "null"]
+                                        },
+                                        "user": {
+                                            "type": ["string", "null"]
+                                        }
+                                    }
+                                },
+                                "seccompProfile": {
+                                    "type": "object",
+                                    "properties": {
+                                        "localhostProfile": {
+                                            "type": ["string", "null"]
+                                        },
+                                        "type": {
+                                            "type": ["string", "null"]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "podServiceAccount": {
+                            "type": ["string", "null"]
+                        },
+                        "config": {
+                            "type": ["object"]
+                        }
+                    }
+                },
                 "notifications": {
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -1564,6 +1855,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1753,6 +2047,11 @@
                         "enabled": {
                             "type": "boolean"
                         },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -1777,6 +2076,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -1963,6 +2265,11 @@
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -1987,6 +2294,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -2175,6 +2485,11 @@
                     "type": "object",
                     "required": [],
                     "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -2199,6 +2514,9 @@
                             "properties": {
                                 "name": {
                                     "type": "string"
+                                },
+                                "tag": {
+                                    "type": ["string", "null"]
                                 }
                             }
                         },
@@ -2403,6 +2721,11 @@
                         "size": {
                             "type": "string"
                         },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -2426,6 +2749,11 @@
                         "size": {
                             "type": "string"
                         },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
+                        },
                         "labels": {
                             "type": "object",
                             "required": [],
@@ -2448,6 +2776,11 @@
                         },
                         "size": {
                             "type": "string"
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
                         },
                         "labels": {
                             "type": "object",
@@ -2474,6 +2807,11 @@
                         },
                         "size": {
                             "type": "string"
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "required": [],
+                            "properties": {}
                         },
                         "labels": {
                             "type": "object",
@@ -2502,6 +2840,11 @@
             "properties": {
                 "enabled": {
                     "type": "boolean"
+                },
+                "annotations": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {}
                 },
                 "labels": {
                     "type": "object",
@@ -2570,6 +2913,11 @@
                                 "size": {
                                     "type": "string"
                                 },
+                                "annotations": {
+                                    "type": "object",
+                                    "required": [],
+                                    "properties": {}
+                                },
                                 "labels": {
                                     "type": "object",
                                     "required": [],
@@ -2593,6 +2941,11 @@
                                 "size": {
                                     "type": "string"
                                 },
+                                "annotations": {
+                                    "type": "object",
+                                    "required": [],
+                                    "properties": {}
+                                },
                                 "labels": {
                                     "type": "object",
                                     "required": [],
@@ -2615,6 +2968,11 @@
                                 },
                                 "size": {
                                     "type": "string"
+                                },
+                                "annotations": {
+                                    "type": "object",
+                                    "required": [],
+                                    "properties": {}
                                 },
                                 "labels": {
                                     "type": "object",

@@ -6,7 +6,12 @@ metadata:
   namespace: {{ .Release.Namespace }}
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
-    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-weight": "-5"
+    {{- if .Values.argoCDSupport }}
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-2"
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    {{ end }}
 data:
   ACCEPT_EULA: "Y"
   MSSQL_PID: "Express"
@@ -48,15 +53,24 @@ data:
   globalSettings__enableCloudCommunication: {{ .Values.general.enableCloudCommunication | quote }}
   globalSettings__baseServiceUri__cloudRegion: {{ .Values.general.cloudRegion }}
 {{- if eq .Values.general.cloudRegion "EU" }}
-  globalSettings__installation__identityUri: "https://identity.bitwarden.eu"
-  globalSettings__installation__apiUri: "https://api.bitwarden.eu"
-  globalSettings__pushRelayBaseUri: "https://push.bitwarden.eu"
+  globalSettings__installation__identityUri: {{ .Values.general.cloudIdentityUri | quote | default "https://identity.bitwarden.eu" }}
+  globalSettings__installation__apiUri: {{ .Values.general.cloudApiUri | quote | default "https://api.bitwarden.eu" }}
+  globalSettings__pushRelayBaseUri: {{ .Values.general.cloudPushRelayBaseUri | quote | default "https://push.bitwarden.eu" }}
 {{- else }}
-  globalSettings__pushRelayBaseUri: "https://push.bitwarden.com"
+  {{- if .Values.general.cloudIdentityUri }}
+  globalSettings__installation__identityUri: {{ .Values.general.cloudIdentityApiUri | quote }}
+  {{- end }}
+  {{- if .Values.general.cloudApiUri }}
+  globalSettings__installation__apiUri: {{ .Values.general.cloudApiUri | quote }}
+  {{- end }}
+  globalSettings__pushRelayBaseUri: {{ .Values.general.cloudPushRelayBaseUri | quote | default "https://push.bitwarden.com" }}
 {{- end }}
   adminSettings__admins: {{ .Values.general.admins | quote }}
   LOCAL_UID: "1000"
   LOCAL_GID: "1000"
+  GITHUB_PR_ID: {{ .Values.github.prId | quote }}
+  GITHUB_OWNER: {{ .Values.github.owner | quote }}
+  GITHUB_PROJECT: {{ .Values.github.project | quote }}
 
 ---
 apiVersion: v1
@@ -67,6 +81,11 @@ metadata:
   annotations:
     "helm.sh/hook": pre-install
     "helm.sh/hook-weight": "1"
+    {{- if .Values.argoCDSupport }}
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    {{ end }}
 data:
   app-id.json: |-
     {
@@ -84,3 +103,33 @@ data:
         }
       ]
     }
+
+---
+{{- if .Values.component.keyConnector.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config-map-key-connector
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    "helm.sh/hook": pre-install, pre-upgrade
+    "helm.sh/hook-weight": "1"
+    {{- if .Values.argoCDSupport }}
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    {{ end }}
+data:
+  keyConnectorSettings__webVaultUri: "https://{{ .Values.general.domain }}"
+  keyConnectorSettings__identityServerUri: "http://{{ template "bitwarden.identity" . }}:5000"
+  keyConnectorSettings__database__provider: {{ .Values.component.keyConnector.config.databaseProvider }}
+  {{- if eq .Values.component.keyConnector.config.databaseProvider "json" }}
+  keyConnectorSettings__database__jsonFilePath: "/etc/bitwarden/data.json"
+  {{- end }}
+  keyConnectorSettings__rsaKey__provider: {{ .Values.component.keyConnector.config.rsaKeyProvider }}
+  keyConnectorSettings__certificate__provider: {{ .Values.component.keyConnector.config.certificateProvider}}
+  {{- if eq .Values.component.keyConnector.config.certificateProvider "filesystem" }}
+  keyConnectorSettings__certificate__filesystemPath: "/etc/bitwarden/bwkc.pfx"
+  {{- end }}
+{{- end }}

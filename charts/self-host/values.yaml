@@ -2,7 +2,46 @@
 fullnameOverride: ""
 nameOverride: ""
 
+# LaunchDarkly feature flags
+# Flags can be added as key-value pairs, e.g., flagName: true. See the documentation for more information.
+# See https://contributing.bitwarden.com/contributing/feature-flags/#flag-data-sources for more information.
+featureFlags: {}
+
+# Enable Argo CD support
+# Adds annotations for sync waves and hooks on various jobs to ensure proper ordering of resources.
+# The existing hooks aren't ordered for Argo CD, so this is required for Argo CD deployments.
+# Components still require sync wave annotations and can be defined in the component section.
+argoCDSupport: true
+
+# GitHub values to be used for interacting with the GitHub API.
+# These are not required, but functionality will be disabled if they are not provided.
+github:
+  project:
+  owner:
+  prId:
+
+# Optional extensions that can be toggled for additional functionality.
+extensions:
+  dbClient:
+    enabled: false
+    annotations: {}
+    image:
+      name: dbeaver/cloudbeaver
+      tag: latest
+    service:
+      port: 8978
+  splunk:
+    enabled: false
+    annotations: {}
+    version: 9.3
+    bitwardenSplunkAppArtifact:
+      artifactURL: ""
+
 general:
+  # Generate identity certificate
+  # Defaults to a shared certificate for encryption (required for dataset sharing)
+  # Environment must be recreated when modified
+  generateIdentityCertificate: false
   # Domain name for the service
   domain: "REPLACE"
   ingress:
@@ -12,9 +51,9 @@ general:
     className: "nginx"
      ## - Annotations to add to the Ingress resource.
     annotations:
-      # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      # nginx.ingress.kubernetes.io/use-regex: "true"
-      # nginx.ingress.kubernetes.io/rewrite-target: /$1
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
       # nginx.ingress.kubernetes.io/proxy-body-size: 500m
       # nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
       # nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
@@ -59,6 +98,12 @@ general:
       admin:
         path: /(admin/?.*)
         pathType: ImplementationSpecific
+      keyConnector:
+        path: /key-connector/(.*)
+        pathType: ImplementationSpecific
+      mssql:
+        path: /(mssql/.*)
+        pathType: ImplementationSpecific
 
   # Override application container version tags.  Theses will be versioned with the chart and need not be changed in most circumstances.
   coreVersionOverride: ""
@@ -71,7 +116,7 @@ general:
     # Email address used for invitations, typically no-reply@smtp-host
     replyToEmail: "no-reply@bitwarden.localhost"
     # Your SMTP server hostname (recommended) or IP address
-    smtpHost: "smtp.gmail.com"
+    smtpHost: "smtp.sendgrid.net"
     # The SMTP port used by the SMTP server
     smtpPort: "587"
     # Whether your SMTP server uses an encryption protocol, "true" for SSL, "false" for TLS
@@ -97,6 +142,10 @@ general:
   enableCloudCommunication: false
   # Cloud region for sync.  Please see: https://bitwarden.com/help/families-for-enterprise-self-hosted/#step-1-enable-cloud-communication
   cloudRegion: US
+  # Specify Bitwarden cloud URI endpoint. Default to US/EU production cloud based on cloudRegion.
+  cloudIdentityApiUri: "https://identity.usdev.bitwarden.pw"
+  cloudApiUri: "https://api.usdev.bitwarden.pw"
+  cloudPushRelayBaseUri:
 
 # Specify the name of the shared storage class
 # This storage class requires ReadWriteMany.  You will need to provide your own storage class.  Storage classes with automatic volume previsioners are recommended.
@@ -108,10 +157,16 @@ secrets:
   # Secrets can either be created via 'kubectl create secrets' or by using a secret provider class.  If using the latter, specify the name here
   secretProviderClass:
 
+  # Azure Key Vault name for shared cloud resources secret
+  azureKeyVaultName: ephemeral-env-kv
+
 # Settings for individual service containers
 component:
   # The Admin component
   admin:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -120,7 +175,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/admin
+      name: bitwardenprod.azurecr.io/admin
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -138,6 +193,9 @@ component:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
   api:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -146,7 +204,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/api
+      name: bitwardenprod.azurecr.io/api
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -164,6 +222,9 @@ component:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
   attachments:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -172,7 +233,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/attachments
+      name: bitwardenprod.azurecr.io/attachments
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -190,6 +251,9 @@ component:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
   events:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -198,7 +262,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/events
+      name: bitwardenprod.azurecr.io/events
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -216,6 +280,9 @@ component:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
   icons:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -224,7 +291,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/icons
+      name: bitwardenprod.azurecr.io/icons
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -242,6 +309,9 @@ component:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
   identity:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -250,7 +320,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/identity
+      name: bitwardenprod.azurecr.io/identity
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -267,7 +337,11 @@ component:
     podSecurityContext:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
-  notifications:
+  keyConnector:
+    # Enable or disable the Key Connector component
+    enabled: false
+    # Additional deployment annotations
+    annotations: {}
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -276,7 +350,38 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/notifications
+      name: bitwardenprod.azurecr.io/key-connector
+    # Key Connector version
+      tag: "dev"
+    # The pod resource requirements.  You can adjust these up and down for your environment
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "50m"
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
+    # Specifies the strategy used to replace old Pods by new ones. The value can be "Recreate" or "RollingUpdate". "RollingUpdate" is the default value.
+    deploymentStrategy: RollingUpdate
+    # This will set the Kubernetes container security context
+    securityContext:
+    # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
+    podServiceAccount:
+    # Key Connector configuration
+    config:
+      databaseProvider: "json"
+      rsaKeyProvider: "certificate"
+      certificateProvider: "filesystem"
+
+  notifications:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
+    # Additional deployment labels
+    labels: {}
+    # Image name, tag, and pull policy
+    image:
+      name: bitwardenprod.azurecr.io/notifications
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -294,6 +399,9 @@ component:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
   scim:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # SCIM is disabled by default.  To use this service, enable it below and set an appropriate Ingress path
     enabled: false
     # Additional deployment labels
@@ -304,7 +412,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/scim
+      name: bitwardenprod.azurecr.io/scim
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -322,6 +430,9 @@ component:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
   sso:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -330,7 +441,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/sso
+      name: bitwardenprod.azurecr.io/sso
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -348,6 +459,9 @@ component:
     # Run the pod under a service account you create.  This is especially useful for OpenShift deployments
     podServiceAccount:
   web:
+    # Additional deployment annotations
+    annotations:
+      configmap.reloader.stakater.com/auto: "true"
     # Additional deployment labels
     labels: {}
     # Optionally place deployment on specifc nodes
@@ -356,7 +470,7 @@ component:
     tolerations: []
     # Image name, tag, and pull policy
     image:
-      name: ghcr.io/bitwarden/web
+      name: bitwardenprod.azurecr.io/web
     # The pod resource requirements.  You can adjust these up and down for your environment
     resources:
       requests:
@@ -377,7 +491,7 @@ component:
 supportComponents:
   dbMigrator:
     image:
-      name: ghcr.io/bitwarden/mssqlmigratorutility
+      name: bitwardenprod.azurecr.io/mssqlmigratorutility
   certGenerator:
     image:
       name: docker.io/nginx
@@ -397,6 +511,7 @@ volume:
     # storageClass: "shared-storage"
     size: "1Gi"
     labels: {}
+    annotations: {}
   attachments:
     # Use an existing PVC by specifying the name.
     # existingClaim: claimName
@@ -406,6 +521,7 @@ volume:
     # storageClass: "shared-storage"
     size: 1Gi
     labels: {}
+    annotations: {}
   licenses:
     # Use an existing PVC by specifying the name.
     # existingClaim: claimName
@@ -415,6 +531,7 @@ volume:
     # storageClass: "shared-storage"
     size: 1Gi
     labels: {}
+    annotations: {}
   logs:
     # Logs are disabled by default
     enabled: false
@@ -431,6 +548,7 @@ volume:
     enabled: false
     # Load custom Certificates from the following ConfigMap
     configMapName: cacert
+    annotations: {}
 
 #
 # Configure service account for pre- and post-install hooks
@@ -447,6 +565,11 @@ serviceAccount:
 database:
   # deploy the database pod?  if false, a connection string to a SQL Server will need to be provided through one of the configuration providers.
   enabled: true
+  # Additional annotations
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook-delete-policy: HookFailed
   # Labels to add to the MSSQL deployment
   labels: {}
   # Optionally place deployment on specifc nodes
@@ -473,29 +596,41 @@ database:
       # Use an existing PVC by specifying the name.
       # existingClaim: claimName
       # Override the accessMode specified in general.volumeAccessMode
-      # accessMode: ReadWriteOnce
+      accessMode: ReadWriteOnce
       # Override the storageClass specified in sharedStorageClassName
-      # storageClass: "shared-storage"
-      size: 1Gi
+      storageClass: "managed"
+      size: 10Gi
       labels: {}
+      annotations:
+        argocd.argoproj.io/hook: PreSync
+        argocd.argoproj.io/sync-wave: "1"
+        argocd.argoproj.io/hook-delete-policy: HookFailed
     data:
       # Use an existing PVC by specifying the name.
       # existingClaim: claimName
       # Override the accessMode specified in general.volumeAccessMode
-      # accessMode: ReadWriteOnce
+      accessMode: ReadWriteOnce
       # Override the storageClass specified in sharedStorageClassName
-      # storageClass: "shared-storage"
-      size: 10Gi
+      storageClass: "managed"
+      size: 20Gi
       labels: {}
+      annotations:
+        argocd.argoproj.io/hook: PreSync
+        argocd.argoproj.io/sync-wave: "1"
+        argocd.argoproj.io/hook-delete-policy: HookFailed
     log:
       # Use an existing PVC by specifying the name.
       # existingClaim: claimName
       # Override the accessMode specified in general.volumeAccessMode
-      # accessMode: ReadWriteOnce
+      accessMode: ReadWriteOnce
       # Override the storageClass specified in sharedStorageClassName
-      # storageClass: "shared-storage"
+      storageClass: "managed"
       size: 10Gi
       labels: {}
+      annotations:
+        argocd.argoproj.io/hook: PreSync
+        argocd.argoproj.io/sync-wave: "1"
+        argocd.argoproj.io/hook-delete-policy: HookFailed
   # Specifies the strategy used to replace old Pods by new ones. The value can be "OnDelete" or "RollingUpdate". "OnDelete" is the default value.
   # When set to OnDelete, the SQL pod will not be recreated automatically on update.  It must be manually deleted to update.
   updateStrategy: OnDelete

@@ -1,3 +1,6 @@
+# Get tag from image.tag, or coreVersionOverride, or default to coreVersionDefault
+{{- $tag := default ( default ( include "bitwarden.coreVersionDefault" nil ) .Values.general.coreVersionOverride ) .Values.supportComponents.dbMigrator.image.tag -}}
+
 ---
 apiVersion: batch/v1
 kind: Job
@@ -8,6 +11,11 @@ metadata:
   annotations:
     {{- if .Values.database.enabled }}
     "helm.sh/hook": pre-upgrade
+    {{- if .Values.argoCDSupport }}
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
+    {{ end }}
     {{- else }}
     "helm.sh/hook": pre-install,pre-upgrade
     {{- end }}

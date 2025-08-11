@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   name: {{ template "bitwarden.web" . }}
   namespace: {{ .Release.Namespace }}
+  annotations: {{ toYaml .Values.component.web.annotations | nindent 4 }}
   labels:
     app: {{ template "bitwarden.web" . }}
     app.kubernetes.io/component: web
@@ -59,6 +60,8 @@ spec:
               name: {{ .Values.secrets.secretName | quote }}
           - secretRef:
               name: {{ template "bitwarden.keyssecret" . }}
+          - secretRef:
+              name: {{ template "bitwarden.sharedCloudResourcesSecret" . }}
           {{- if .Values.database.enabled }}
           - secretRef:
               name: {{ .Release.Name }}-sql-connection-string
@@ -104,6 +107,7 @@ kind: Service
 metadata:
   name: {{ template "bitwarden.web" . }}
   namespace: {{ .Release.Namespace }}
+  annotations: {{ toYaml .Values.component.web.annotations | nindent 4 }}
   labels:
     app.kubernetes.io/component: web
 {{ include "bitwarden.labels" . | indent 4 }}

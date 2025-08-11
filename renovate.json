@@ -7,12 +7,15 @@
     ":rebaseStalePrs",
     "schedule:weekends"
   ],
-  "includeForks": true,
+  "forkProcessing": "enabled",
   "enabledManagers": [
     "github-actions",
     "helm-requirements",
     "helm-values",
     "helmv3"
+  ],
+  "ignorePaths": [
+    "charts/sm-operator"
   ],
   "packageRules": [
     {

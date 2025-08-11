@@ -1,3 +1,6 @@
+# Get tag from image.tag, or coreVersionOverride, or default to coreVersionDefault
+{{- $tag := default ( default ( include "bitwarden.coreVersionDefault" nil ) .Values.general.coreVersionOverride ) .Values.supportComponents.dbMigrator.image.tag -}}
+
 ---
 apiVersion: batch/v1
 kind: Job
@@ -9,6 +12,10 @@ metadata:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-weight": "0"
     "helm.sh/hook-delete-policy": hook-succeeded,hook-failed,before-hook-creation
+    {{- if .Values.argoCDSupport }}
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded,BeforeHookCreation
+    {{ end }}
 spec:
   template:
     metadata:
@@ -41,10 +48,6 @@ spec:
           while [[ $(kubectl get pods -n {{ .Release.Namespace }} -l app={{ template "bitwarden.admin" . }} -o jsonpath="{.items[*].status.containerStatuses[*].ready}") != "true" ]]; do sleep 1; done
 
           echo "Admin Ready!"
-
-          while [ ! -f /db/vault.mdf ]; do sleep 1; done
-
-          echo "DB Ready!"
         ']
         {{- else }}
         args: ['
@@ -54,11 +57,6 @@ spec:
         ']
         {{- end }}
         image: "{{ .Values.supportComponents.kubectl.image.name }}:{{ .Values.supportComponents.kubectl.image.tag }}"
-        volumeMounts:
-          {{- if .Values.database.enabled }}
-          - name: mssql-data
-            mountPath: /db
-          {{- end }}
       containers:
       - name: migrate-db
         env:
