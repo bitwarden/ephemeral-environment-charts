@@ -31,10 +31,19 @@ spec:
 {{ toYaml . | indent 8 }}
 {{- end }}
     spec:
+    {{- with .Values.general.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.general.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
     {{- if .Values.database.podServiceAccount }}
       serviceAccount: {{ .Values.database.podServiceAccount | quote }}
       serviceAccountName: {{ .Values.database.podServiceAccount | quote }}
     {{- end }}
+<<<<<<< HEAD
       initContainers:
         - name: init-permissions
           image: busybox
@@ -52,6 +61,12 @@ spec:
               mountPath: /var/opt/mssql/log
             - name: mssql-backups
               mountPath: /var/opt/mssql/backups
+=======
+    {{- if .Values.database.podSecurityContext }}
+      securityContext:
+{{ toYaml .Values.database.podSecurityContext | indent 8 }}
+    {{- end }}
+>>>>>>> upstream/main
       containers:
         - name: {{ template "bitwarden.mssql" . }}
           image: "{{ .Values.database.image.name }}:{{ .Values.database.image.tag }}"

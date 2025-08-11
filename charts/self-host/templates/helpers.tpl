@@ -1,8 +1,15 @@
 {{- define "bitwarden.coreVersionDefault" -}}
+<<<<<<< HEAD
 {{- "dev" -}}
 {{- end -}}
 {{- define "bitwarden.webVersionDefault" -}}
 {{- "dev" -}}
+=======
+{{- "2025.7.3" -}}
+{{- end -}}
+{{- define "bitwarden.webVersionDefault" -}}
+{{- "2025.7.2" -}}
+>>>>>>> upstream/main
 {{- end -}}
 
 {{/*

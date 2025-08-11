@@ -940,7 +940,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/admin
+      name: ghcr.io/bitwarden/admin
     resources:
       requests:
         memory: "64Mi"
@@ -949,6 +949,7 @@ component:
         memory: "128Mi"
         cpu: "100m"
     securityContext:
+    podSecurityContext:
     podServiceAccount: bitwarden-sa
 ```
 
@@ -1242,7 +1243,7 @@ component:
     labels: {}
     # Image name, tag, and pull policy
     image:
-      name: bitwarden/admin
+      name: ghcr.io/bitwarden/admin
     resources:
       requests:
         memory: "64Mi"
@@ -1251,6 +1252,7 @@ component:
         memory: "128Mi"
         cpu: "100m"
     securityContext:
+    podSecurityContext:
     podServiceAccount: bitwarden-sa
 ```
 
