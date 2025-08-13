@@ -5,7 +5,7 @@ component:
       name: bitwardenprod.azurecr.io/admin
   api:
     image:
-      tag: latest@sha256:6644bebfc692b8f156f3c7412be2116b0349e92aa9a7ef8a2d34bdf5a458b982
+      tag: ee-db-seeder@sha256:d49398f4bae6b2bbe3a4a2fef2d3f9f2f6cd29596cc0a855f7d73adc71a63402
       name: bitwardenprod.azurecr.io/api
   attachments:
     image:
@@ -17,23 +17,23 @@ component:
       name: bitwardenprod.azurecr.io/events
   icons:
     image:
-      tag: latest@sha256:225e01e993bd0015f9aa45664550c001457d0c11ef87b62bdbdb6b769eaf946b
+      tag: ee-db-seeder@sha256:9258d14647a3a627e288fbb9dd8a3de3e5c7d6bca415a3bff27281375f5bca1d
       name: bitwardenprod.azurecr.io/icons
   identity:
     image:
-      tag: latest@sha256:4d7892d8aafe9526881ba26f5e9ffacdd6faff4092ed887d4f176ceec1d3dde8
+      tag: ee-db-seeder@sha256:3333a7d6df9a07aa61ccd82c1305ea653736f19e76a902e08f54bbd753291409
       name: bitwardenprod.azurecr.io/identity
   notifications:
     image:
-      tag: latest@sha256:1b8069609f24c1d06df8234a100d2818145bbcf3f95ce746dd74645742ee950f
+      tag: ee-db-seeder@sha256:aaa923701079db69060338ca84c0e3f4989ba2fe3750f5c313e15ee4bc3b2027
       name: bitwardenprod.azurecr.io/notifications
   sso:
     image:
-      tag: latest@sha256:9e893b4e8ec8064003aaa8ac0e2f83b8e8c451370f49e2c4e1b80311f3d11b34
+      tag: ee-db-seeder@sha256:6d3a04618e027e48c9d34d6c2dd00a3e1391e2114ac3f52df623fc9e67480648
       name: bitwardenprod.azurecr.io/sso
   scim:
     image:
-      tag: ee-db-seeder@sha256:d290f1719e973c12fea5f0cf271fd667e94251a91ad4554565d10f0273dc4060
+      tag: ee-db-seeder@sha256:41779ece121c8536b4143d9abacd4c9fc65167aace938bf7678ec9ee90520096
       name: bitwardenprod.azurecr.io/scim
 supportComponents:
   dbMigrator:
