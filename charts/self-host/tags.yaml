@@ -13,7 +13,7 @@ component:
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
-      tag: latest@sha256:b922b14d9cbfff4d2548b8af2af4e545cbc23f788d9db7ee83dd87768a4832cc
+      tag: ee-db-seeder@sha256:b922b14d9cbfff4d2548b8af2af4e545cbc23f788d9db7ee83dd87768a4832cc
       name: bitwardenprod.azurecr.io/events
   icons:
     image:
@@ -21,7 +21,7 @@ component:
       name: bitwardenprod.azurecr.io/icons
   identity:
     image:
-      tag: latest@sha256:4d7892d8aafe9526881ba26f5e9ffacdd6faff4092ed887d4f176ceec1d3dde8
+      tag: ee-db-seeder@sha256:4d7892d8aafe9526881ba26f5e9ffacdd6faff4092ed887d4f176ceec1d3dde8
       name: bitwardenprod.azurecr.io/identity
   notifications:
     image:
@@ -29,7 +29,7 @@ component:
       name: bitwardenprod.azurecr.io/notifications
   sso:
     image:
-      tag: latest@sha256:9e893b4e8ec8064003aaa8ac0e2f83b8e8c451370f49e2c4e1b80311f3d11b34
+      tag: ee-db-seeder@sha256:9e893b4e8ec8064003aaa8ac0e2f83b8e8c451370f49e2c4e1b80311f3d11b34
       name: bitwardenprod.azurecr.io/sso
   scim:
     image:
@@ -38,5 +38,5 @@ component:
 supportComponents:
   dbMigrator:
     image:
-      tag: ee-db-seeder@sha256:ba26e3b125e69380f4454658a818486f8afe14f453faa70b50cf489cf9967232
+      tag: latest@sha256:ba26e3b125e69380f4454658a818486f8afe14f453faa70b50cf489cf9967232
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
