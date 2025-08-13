@@ -13,7 +13,7 @@ component:
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
-      tag: latest@sha256:b922b14d9cbfff4d2548b8af2af4e545cbc23f788d9db7ee83dd87768a4832cc
+      tag: ee-db-seeder@sha256:d68a6ad6da0c32fb52acd8efa828d8bcd9c263708b0186ae223c7d1061ff126b
       name: bitwardenprod.azurecr.io/events
   icons:
     image:
@@ -38,5 +38,5 @@ component:
 supportComponents:
   dbMigrator:
     image:
-      tag: ee-db-seeder@sha256:ba26e3b125e69380f4454658a818486f8afe14f453faa70b50cf489cf9967232
+      tag: ee-db-seeder@sha256:aee61ecef9c067604cf388436e97e28cdf1f17199a51f45e786a593bd82110ab
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
