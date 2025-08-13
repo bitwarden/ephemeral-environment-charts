@@ -9,7 +9,7 @@ component:
       name: bitwardenprod.azurecr.io/api
   attachments:
     image:
-      tag: latest@sha256:986b69c6858642443e195579bd94fc0f972c7fb423ff8f8ed01c06ae5d4cf463
+      tag: ee-db-seeder@sha256:b6637578c81262771ea529e55a7b0f231e6d88cc6ae887d5e3ee035d9916fcc9
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
