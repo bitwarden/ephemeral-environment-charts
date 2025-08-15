@@ -38,5 +38,5 @@ component:
 supportComponents:
   dbMigrator:
     image:
-      tag: ee-db-seeder@sha256:aee61ecef9c067604cf388436e97e28cdf1f17199a51f45e786a593bd82110ab
+      tag: latest@sha256:aee61ecef9c067604cf388436e97e28cdf1f17199a51f45e786a593bd82110ab
       name: bitwardenprod.azurecr.io/mssqlmigratorutility
