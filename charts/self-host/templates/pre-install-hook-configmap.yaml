@@ -67,9 +67,6 @@ data:
   adminSettings__admins: {{ .Values.general.admins | quote }}
   LOCAL_UID: "1000"
   LOCAL_GID: "1000"
-  GITHUB_PR_ID: {{ .Values.github.prId | quote }}
-  GITHUB_OWNER: {{ .Values.github.owner | quote }}
-  GITHUB_PROJECT: {{ .Values.github.project | quote }}
 
 ---
 apiVersion: v1
