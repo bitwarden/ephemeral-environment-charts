@@ -1,35 +1,35 @@
 component:
   admin:
     image:
-      tag: ee-db-seeder@sha256:bcd870d5f9d67cb3a3f36a00054cf321a6f23db0f878014d363390b0799e6f58
+      tag: latest@sha256:bcd870d5f9d67cb3a3f36a00054cf321a6f23db0f878014d363390b0799e6f58
       name: bitwardenprod.azurecr.io/admin
   api:
     image:
-      tag: ee-db-seeder@sha256:d49398f4bae6b2bbe3a4a2fef2d3f9f2f6cd29596cc0a855f7d73adc71a63402
+      tag: latest@sha256:d49398f4bae6b2bbe3a4a2fef2d3f9f2f6cd29596cc0a855f7d73adc71a63402
       name: bitwardenprod.azurecr.io/api
   attachments:
     image:
-      tag: ee-db-seeder@sha256:b6637578c81262771ea529e55a7b0f231e6d88cc6ae887d5e3ee035d9916fcc9
+      tag: latest@sha256:b6637578c81262771ea529e55a7b0f231e6d88cc6ae887d5e3ee035d9916fcc9
       name: bitwardenprod.azurecr.io/attachments
   events:
     image:
-      tag: ee-db-seeder@sha256:d68a6ad6da0c32fb52acd8efa828d8bcd9c263708b0186ae223c7d1061ff126b
+      tag: latest@sha256:d68a6ad6da0c32fb52acd8efa828d8bcd9c263708b0186ae223c7d1061ff126b
       name: bitwardenprod.azurecr.io/events
   icons:
     image:
-      tag: ee-db-seeder@sha256:9258d14647a3a627e288fbb9dd8a3de3e5c7d6bca415a3bff27281375f5bca1d
+      tag: latest@sha256:9258d14647a3a627e288fbb9dd8a3de3e5c7d6bca415a3bff27281375f5bca1d
       name: bitwardenprod.azurecr.io/icons
   identity:
     image:
-      tag: ee-db-seeder@sha256:3333a7d6df9a07aa61ccd82c1305ea653736f19e76a902e08f54bbd753291409
+      tag: latest@sha256:3333a7d6df9a07aa61ccd82c1305ea653736f19e76a902e08f54bbd753291409
       name: bitwardenprod.azurecr.io/identity
   notifications:
     image:
-      tag: ee-db-seeder@sha256:aaa923701079db69060338ca84c0e3f4989ba2fe3750f5c313e15ee4bc3b2027
+      tag: latest@sha256:aaa923701079db69060338ca84c0e3f4989ba2fe3750f5c313e15ee4bc3b2027
       name: bitwardenprod.azurecr.io/notifications
   sso:
     image:
-      tag: ee-db-seeder@sha256:6d3a04618e027e48c9d34d6c2dd00a3e1391e2114ac3f52df623fc9e67480648
+      tag: latest@sha256:6d3a04618e027e48c9d34d6c2dd00a3e1391e2114ac3f52df623fc9e67480648
       name: bitwardenprod.azurecr.io/sso
   scim:
     image:
